@@ -8,6 +8,9 @@ Key Features
 - Citizen Science: Share information and engage in community-driven research.
 - Open Source: Driven by the community, promoting collaboration and innovation.
 - Modular Design: Based on the principles of the circular economy, allowing adaptability and scalability.
+<p align="center">
+<img width="600" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/b09d52ce-bccf-47e4-86c5-7ff1bcfb4936">
+</p>
 
 # Growing Lab & Sharing Knowledge
 Edward fosters continuous improvement through community involvement at multiple levels. Individuals manage local stations, benefit from fresh food, and participate in testing new biological scenarios. This approach enriches community knowledge and enhances the numerical model.
@@ -42,10 +45,15 @@ Improve the maintenance cost and efficiency with water cooled LED. The study is 
 4. Measure (Light quality (Energy and Wavelengths, Consumption) over time
 
 # Product Development
+<img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
+
 The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi1. The main challenges faced by the current system include:
 • not a standalone system (Raspberrypi + Station Controller)
 • no option for easy remote monitoring of the system (NAT, DNS)
 • missing control options (regular self-calibration, failsafe mode)
+
+More details about the electronics designed circuits, uaed materials etc.. are shared on hardware.md
+
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
 </p>
@@ -53,9 +61,8 @@ The current prototype system is powered by Home Assistant with ESPHome running o
 ## Development Project 1 : Switch from HA Setup to independant Station MCU with remote connectivity
 <img width="1216" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/0fab5a13-c6f2-44c3-aea5-96a105847a0e">
 
-
+You can find the current 
 ## Hardware
-<img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
 
 ## Use-Case
 Chicken Coop
