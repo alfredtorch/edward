@@ -43,6 +43,11 @@ On Board Power Regulator
 | 5V   | RGB, STEPPER, SERVO, MOSFET, VFAN | |                     |
 | 3V3  | SERVO, MCU    |               |                            |
 
+### Version
+| Model | Notes |
+| ---- | ---- |
+| GreenHouse V2 | Issue Flow Meter, 4 External Power Control (AC-DC) |
+| Fishtank | Issue Flow Meter, 4 On Board Mosfet |
 ## Helios
 
 This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
@@ -53,6 +58,18 @@ Features:
 - On Board Power Regulator
 - Pluggable LED Drivers 
 - Water Cooling Control and Sense
+
+### On-Board
+|Feature|Notes|
+|-----|----|
+|Temperature Sensor|On Board and Heatsink|
+
+
+### Pinout
+| Pin  | Option 1      | Option 2      | Note                       |
+|------|---------------|---------------|----------------------------|
+| IO0  | Fan Signal Tacho | Stepper C     | GPIO Selector Solder Jumper |
+| IO2  | LED Status    |               |                            |
 
 8 Channel LED Driver
 2 PWM Output
