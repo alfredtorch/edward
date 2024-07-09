@@ -2,17 +2,46 @@
 
 ## Green House - Terra
 With this device, you can easily interact with your agricultural setup and start controlling actuators to grow  
-
 Features:
 ESP32-based
 Many configuration possible (Solder Jumper)
 Tasmota and Esphome Compatible
 Open Source
 On Board Power Regulator
+<p align="center">
+<img width="1000" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/caf6568e-a54c-49b0-b28f-7a82f24329e7">
+</p>
 
-<img width="650" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/caf6568e-a54c-49b0-b28f-7a82f24329e7">
-
-<img width="647" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/400e1b48-7a0f-4fa9-ace6-23f847af61c7">
+| Pin  | Option 1      | Option 2      | Note                       |
+|------|---------------|---------------|----------------------------|
+| IO0  | Fan Signal Tacho | Stepper C     | GPIO Selector Solder Jumper |
+| IO2  | LED Status    |               |                            |
+| IO4  | RGB           | Solder Jumper |                            |
+| IO5  | PIO3          | 5V Level - Mosfet Output |               |
+| IO12 | Button Board  |               |                            |
+| IO13 | PIO4          | RGB Pixel     | 5V Level - Mosfet Output   |
+| IO14 | Limit 1       | Servo 1 / Sonar Trigger | GPIO Selector Solder Jumper |
+| IO15 | Servo 2       | Stepper D     | GPIO Selector Solder Jumper |
+| IO16 | Fan PWM       |               |                            |
+| IO17 | 1-Wire        | Dallas 1 Wire Sensor |                    |
+| IO18 | Turbine Tacho | Flow Meter    |                            |
+| IO19 | PIO1          |               | 3V3 Level                   |
+| IO21 | SDA           |               | 3V3 Level                   |
+| IO22 | SCL           |               | 3V3 Level                   |
+| IO23 | PIO2          |               | 5V Level                    |
+| IO25 | Limit 1       | Stepper B     | GPIO Selector Solder Jumper |
+| IO26 | Turbine Therm | Water Temperature |                        |
+| IO27 | Servo 1 / Sonar Trigger | Stepper A | GPIO Selector Solder Jumper |
+| IO32 | Fan Tacho     | Limit 2       | GPIO Selector Solder Jumper |
+| IO33 | Limit 2       | Servo 2       | GPIO Selector Solder Jumper |
+| IO34 | Water LEVEL 3 |               | Optical or physical switch  |
+| IO35 | Water LEVEL 2 |               | Optical or physical switch  |
+| IO36 | Water LEVEL 4 | Sonar Echo    | Optical or physical switch  |
+| IO39 | Water LEVEL 1 |               | Optical or physical switch  |
+| VIN1 | USB C, STEPPER, SERVO |       | Max 30V, Input of DCDC 5V & 3V3 - direct 5V |
+| VIN2 | RGB, VFAN, MOSFET |           | Direct 5V                  |
+| 5V   | RGB, STEPPER, SERVO, MOSFET, VFAN | |                     |
+| 3V3  | SERVO, MCU    |               |                            |
 
 ## Helios
 
@@ -35,4 +64,10 @@ Features:
 8 AC 2Amp Channel
 
 # Components
+|Model|Integrate|Circuit|Notes|
+|----|----|---|---|
+|DC Load|Motors, pumps|Helio, GreenHouse v1 on-board - v2 external|Blablabla|
+|AC Load|Motors, Lights, ...|SSR Rebel Fighter|Blabla|
+
+
 
