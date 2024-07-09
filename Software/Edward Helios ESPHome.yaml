@@ -1,0 +1,284 @@
+esphome:
+  name: "helios-web-237e5e"
+
+esp8266:
+  board: esp01_1m
+
+# --- [ Includes without configuration ] ---
+api:
+captive_portal:
+logger:
+web_server:
+
+# --- [ Variables ] ---
+# id & name:        Needed to be available to the frontend
+# mode:             Either a text field or a slider
+# optimistic:       Number is automatically updated by HA
+# restore_value:    Number is stored locally on the microcontoller
+
+number:
+  - platform: template
+    id: 'fanStartingTemperature'
+    name: "Temperature at which cooling is started"
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    initial_value: 20.0
+    max_value: 30.0
+    min_value: 0.0
+    step: 0.1
+    mode: box
+    optimistic: true
+    restore_value: true
+    
+  - platform: template
+    id: 'fanMaxSpeedTemperature'
+    name: "Temperature at which the fan reaches maximum speed"
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    initial_value: 35.0
+    max_value: 35.0
+    min_value: 0.0
+    step: 0.1
+    mode: box
+    optimistic: true
+    restore_value: true
+    
+  - platform: template
+    id: 'cutOffTemperature'
+    name: "Temperature at which the lights will be shut down"
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    initial_value: 50.0
+    max_value: 50.0
+    min_value: 0.0
+    step: 0.1
+    mode: box
+    optimistic: true
+    restore_value: true
+
+# --- [ Over the Air Update ] ---
+ota:
+  password: "b44fa2f6562034444f273839507c7054"
+
+# --- [ WiFi ] ---
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esphome-Web-237E5E"
+    password: "AtWFLG1E6azs"
+
+# --- [ I2C ] ---
+i2c:
+  sda: 0
+  scl: 2
+  scan: True
+  id: bus_a
+
+# PCA9685
+pca9685:
+  frequency: 100
+  address: 0x40 # Good PCA
+
+# --- [ Output ] ---
+output:
+  - platform: pca9685
+    id: 'pca9685_output1'
+    channel: 8
+
+  - platform: pca9685
+    id: 'pca9685_output2'
+    channel: 9
+
+  - platform: pca9685
+    id: 'pca9685_output3'
+    channel: 10
+
+  - platform: pca9685
+    id: 'pca9685_output4'
+    channel: 11
+
+  - platform: pca9685
+    id: 'pca9685_output5'
+    channel: 7
+
+  - platform: pca9685
+    id: 'pca9685_output6'
+    channel: 6
+
+  - platform: pca9685
+    id: 'pca9685_output7'
+    channel: 5
+
+  - platform: pca9685
+    id: 'pca9685_output8'
+    channel: 4
+
+  - platform: pca9685
+    id: 'pca9685_output9'
+    channel: 12
+
+  - platform: pca9685
+    id: 'pca9685_Fan'
+    channel: 15
+    min_power: 0.35
+    zero_means_zero: true
+
+  - platform: pca9685
+    id: 'pca9685_M1'
+    channel: 3
+
+  - platform: pca9685
+    id: 'pca9685_M2'
+    channel: 2
+
+  - platform: pca9685
+    id: 'pca9685_M3'
+    channel: 1
+
+  - platform: pca9685
+    id: 'pca9685_M4'
+    channel: 0
+
+# --- [ Light ] ---
+light:
+  - platform: monochromatic
+    id: 'output1'
+    name: "LED 1"
+    output: pca9685_output1
+  
+  - platform: monochromatic
+    id: 'output2'
+    name: "LED 2"
+    output: pca9685_output2
+    
+  - platform: monochromatic
+    id: 'output3'
+    name: "LED 3"
+    output: pca9685_output3
+
+  - platform: monochromatic
+    id: 'output4'
+    name: "LED 4"
+    output: pca9685_output4
+    
+  - platform: monochromatic
+    id: 'output5'
+    name: "LED 5"
+    output: pca9685_output5
+
+  - platform: monochromatic
+    id: 'output6'
+    name: "LED 6"
+    output: pca9685_output6
+    
+  - platform: monochromatic
+    id: 'output7'
+    name: "LED 7"
+    output: pca9685_output7
+
+  - platform: monochromatic
+    id: 'output8'
+    name: "LED 8"
+    output: pca9685_output8    
+
+  - platform: monochromatic
+    id: 'output9'
+    name: "LED Double"
+    output: pca9685_output9
+
+  - platform: monochromatic
+    id: 'fan'
+    name: "Fan"
+    output: pca9685_Fan
+
+  - platform: binary 
+    on_value:
+      then:
+        - light.turn_on:
+            id: fan
+            # Explanation:
+            #  fanStartingTemperature = when the Fan should start spinning
+            #  fanMaxSpeedTemperature = at which temperature the Fan should reach its max speed
+            #  
+            #  The formula below calculates the speed of the fan (final result is a range between 0 and 1.0)
+            brightness: !lambda |-
+              float fanSpeed = ((x - id(fanStartingTemperature).state) * 100 / (id(fanMaxSpeedTemperature).state - id(fanStartingTemperature).state)) / 100.0;
+              return (fanSpeed > 0.0) ? ((fanSpeed < 1.0) ? fanSpeed : 1.0) : 0.0;
+        
+        - light.control:
+            id: pump
+            state: !lambda |-
+              return (x > id(fanStartingTemperature).state);
+
+        - if:
+            condition:
+              lambda: 'return (x > id(cutOffTemperature).state);'
+            then:
+              - light.turn_off: output1
+              - light.turn_off: output2
+              - light.turn_off: output3
+              - light.turn_off: output4
+              - light.turn_off: output5
+              - light.turn_off: output6
+              - light.turn_off: output7
+              - light.turn_off: output8
+              - light.turn_off: output9
+    id: 'pump'
+    name: "Pump"
+    output: pca9685_M1
+
+  - platform: monochromatic
+    id: 'm2'
+    name: "M2"
+    output: pca9685_M2
+
+  - platform: monochromatic
+    id: 'm3'
+    name: "M3"
+    output: pca9685_M3
+
+  - platform: monochromatic
+    id: 'm4'
+    name: "M4"
+    output: pca9685_M4
+
+# --- [ Sensors ] ---
+sensor:
+  - platform: mcp9808
+    # standard address: 0x18
+    name: "MCP9808 Temperature"
+    update_interval: 5s
+    on_value:
+      then:
+        - light.turn_on:
+            id: fan
+            # Explanation:
+            #  fanStartingTemperature = when the Fan should start spinning
+            #  fanMaxSpeedTemperature = at which temperature the Fan should reach its max speed
+            #  
+            #  The formula below calculates the speed of the fan (final result is a range between 0 and 1.0)
+            brightness: !lambda |-
+              float fanSpeed = ((x - id(fanStartingTemperature).state) * 100 / (id(fanMaxSpeedTemperature).state - id(fanStartingTemperature).state)) / 100.0;
+              return (fanSpeed > 0.0) ? ((fanSpeed < 1.0) ? fanSpeed : 1.0) : 0.0;
+        
+        - light.control:
+            id: pump
+            state: !lambda |-
+              return (x > id(fanStartingTemperature).state);
+
+        - if:
+            condition:
+              lambda: 'return (x > id(cutOffTemperature).state);'
+            then:
+              - light.turn_off: output1
+              - light.turn_off: output2
+              - light.turn_off: output3
+              - light.turn_off: output4
+              - light.turn_off: output5
+              - light.turn_off: output6
+              - light.turn_off: output7
+              - light.turn_off: output8
+              - light.turn_off: output9

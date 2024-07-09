@@ -1,0 +1,541 @@
+esphome:
+  name: "edward-prototype-v2"
+  friendly_name: Edward Prototype v2
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# --- [ Includes without configuration ] ---
+logger:
+captive_portal:
+
+# --- [ Local variables ] ---
+globals:
+  - id: 'plantWaterWithoutRoots'  # in liters
+    type: int
+    restore_value: true
+    initial_value: "1"
+
+  - id: 'waterFlowSum' # used to calculate root percentage
+    type: int
+    restore_value: false
+
+  - id: 'timer' # used to calculate the time needed to fill or empty the plant tank
+    type: int
+    restore_value: false
+
+# --- [ Global variables ] ---
+number:
+  # Water cycle
+  - platform: template
+    id: 'plantLowTideTime'
+    name: "Plants - Low tide time"
+    unit_of_measurement: "min"
+    icon: mdi:timeline-clock-outline
+    initial_value: 10
+    max_value: 1440  # 24h
+    min_value: 10
+    step: 5
+    mode: box
+    optimistic: true
+    restore_value: true
+
+  - platform: template
+    id: 'plantHighTideTime'
+    name: "Plants - High tide time"
+    unit_of_measurement: "min"
+    icon: mdi:timeline-clock-outline
+    initial_value: 5
+    max_value: 60   # 1h
+    min_value: 5
+    step: 5
+    mode: box
+    optimistic: true
+    restore_value: true
+
+  # Light control
+  - platform: template
+    id: 'plantSunLightOnTime'
+    name: "Plants - Sun Light On time"
+    unit_of_measurement: "hour"
+    icon: mdi:timeline-clock-outline
+    initial_value: 660  # 11:00
+    max_value: 1425     # 23:45
+    min_value: 0        # 00:00
+    step: 15
+    mode: box
+    optimistic: true
+    restore_value: true
+
+  - platform: template
+    id: 'plantSunLightOffTime'
+    name: "Plants - Sun Light Off time"
+    unit_of_measurement: "hour"
+    icon: mdi:timeline-clock-outline
+    initial_value: 960  # 16:00
+    max_value: 1425     # 23:45
+    min_value: 0        # 00:00
+    step: 1
+    mode: box
+    optimistic: true
+    restore_value: true
+
+# --- [ API Settings ] ---
+api:
+  encryption:
+    key: "0Z2DvyNPsLy/WQqhiECydmVdY4whAJ4S+MMje6FmzIM="
+
+# --- [ Over the Air Update ] ---
+ota:
+  password: "dcd5bf6f546c768b8acb040ac0a6c914"
+
+# --- [ WiFi ] ---
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Edward-Prototype-V1"
+    password: "ksgLYIgaovCB"
+
+# --- [ TIME ] ---
+time:
+  - platform: sntp
+    id: 'sntpTime'
+    on_time:
+      # Every 5min
+      - cron: '0 /5 * * * *'
+        then:
+          # Cycle water
+          - if:
+              condition:
+                - switch.is_on: automationLoop
+                - lambda: |-
+                    //                              Current time in minutes                   %                       Low + High tide time                       == 0
+                    return (int) ((id(sntpTime).now().hour * 60) + id(sntpTime).now().minute) % (int) (id(plantLowTideTime).state + id(plantHighTideTime).state) == 0;
+              then:
+                - button.press: fillPlantTank
+                - delay: !lambda "return id(plantHighTideTime).state  * 60 * 1000;"
+                - button.press: emptyPlantTank
+          
+          # Turn light on
+          - if:
+              condition:
+                - switch.is_on: automationLoop
+                - time.has_time
+                - lambda: "return id(sntpTime).now().hour == id(plantSunLightOnTime).state;"
+              then:
+                - switch.turn_on: helios
+          
+          # Turn light off
+          - if:
+              condition:
+                - switch.is_on: automationLoop
+                - time.has_time
+                - lambda: "return id(sntpTime).now().hour == id(plantSunLightOffTime).state;"
+              then:
+                - switch.turn_off: helios
+                
+# --- [ I2C ] ---
+i2c:
+  sda: GPIO21
+  scl: GPIO22
+  scan: true
+  id: bus_a
+
+# --- [ Dallas ] ---
+dallas:
+  pin: GPIO17
+  update_interval: 2s
+
+# --- [ Buttons ] ---
+button:
+  # Fill or empty tank
+  - platform: template
+    id: 'fillPlantTank'
+    name: "Fill Plant Tank"
+    on_press:
+      then:
+        - switch.turn_on: pumpUp
+        - if:
+            condition:
+              - binary_sensor.is_on: plantTankEmpty
+            then:
+              - globals.set:
+                  id: waterFlowSum
+                  value: "0"
+              - while:
+                  condition:
+                    - switch.is_on: pumpUp
+                  then:
+                    - delay: 1s
+                    - globals.set:
+                        id: waterFlowSum
+                        value: !lambda "return id(waterFlowSum) + id(flowTurbineUp).state;"
+              - sensor.template.publish:
+                  id: rootPercentage
+                  state: !lambda "return 100 - (id(waterFlowSum) / id(plantWaterWithoutRoots) * 100);"
+
+  - platform: template
+    id: 'emptyPlantTank'
+    name: "Empty Plant Tank"
+    on_press:
+      then:
+        switch.turn_on: pumpDown
+  
+  # Set the root count to 0
+  - platform: template
+    name: "Reset root percentage"
+    on_press:
+      then:
+        - switch.turn_on: pumpDown
+        - wait_until:
+            condition:
+              switch.is_off: pumpDown
+        - if:
+            condition:
+              - binary_sensor.is_on: plantTankEmpty
+            then:
+              - switch.turn_on: pumpUp
+              - globals.set:
+                  id: plantWaterWithoutRoots
+                  value: "0"
+              - while:
+                  condition:
+                    - switch.is_on: pumpUp
+                  then:
+                    - delay: 1s
+                    - globals.set:
+                        id: plantWaterWithoutRoots
+                        value: !lambda "return id(plantWaterWithoutRoots) + id(flowTurbineUp).state;"
+
+# --- [ Switches ] ---
+switch:
+  # Relays
+  - platform: gpio
+    pin: GPIO13
+    id: 'pumpUp'
+    internal: true
+    inverted: true
+    interlock: [pumpDown]
+    on_turn_on:
+      # Save the current seconds to calculate the time needed to fill
+      - globals.set:
+          id: timer
+          value: !lambda "return (id(plantTankEmpty).state) ? millis() / 1000 : 0;"
+      # Wait until "full" sensor is active
+      - wait_until:
+          condition:
+            - binary_sensor.is_on: plantTankFull
+          timeout: !lambda |-
+            if (isnan(id(toHighTideTime).state)) return 5 * 60 * 1000;
+            else return (id(toHighTideTime).state * 1.2) * 1000;
+      - if:
+          condition:
+            - switch.is_on: pumpUp
+          then:
+            - if:
+                condition:
+                  - binary_sensor.is_on: plantTankFull
+                then:
+                  # The filling of the tank was successfull
+                  - if:
+                      condition:
+                        - lambda: "return id(timer);"
+                      then:
+                        - sensor.template.publish:
+                            id: toHighTideTime
+                            state: !lambda "return (millis() / 1000) - id(timer);"
+                else:
+                  # The filling of the tank took to long
+                  - homeassistant.service:
+                      service: notify.notify
+                      data:
+                        message: "Timeout while filling the Plants..."
+                        title: "Error!"
+                  - text_sensor.template.publish:
+                      id: errorLog
+                      state: "[ERROR] Timeout while filling the Plants..."
+            - switch.turn_off: pumpUp
+    
+  - platform: gpio
+    pin: GPIO23
+    id: 'pumpDown'
+    internal: true
+    inverted: true
+    interlock: [pumpUp]
+    on_turn_on:
+      # Save the current seconds to calculate the time needed to empty
+      - globals.set:
+          id: timer
+          value: !lambda "return (id(plantTankFull).state) ? millis() / 1000 : 0;"
+      # Wait until "empty" sensor is active
+      - wait_until:
+          condition:
+            - binary_sensor.is_on: plantTankEmpty
+          timeout: !lambda |-
+            if (isnan(id(toLowTideTime).state)) return 5 * 60 * 1000;
+            else return (id(toLowTideTime).state * 1.2) * 1000;
+      - if:
+          condition:
+            - switch.is_on: pumpDown
+          then:
+            - if:
+                condition:
+                  - binary_sensor.is_on: plantTankEmpty
+                then:
+                  # The emptying of the tank was successfull
+                  - if:
+                      condition:
+                        - lambda: "return id(timer);"
+                      then:
+                        - sensor.template.publish:
+                            id: toLowTideTime
+                            state: !lambda "return (millis() / 1000) - id(timer);"
+                else:
+                  # The emptying of the tank took to long
+                  - homeassistant.service:
+                      service: notify.notify
+                      data:
+                        message: "Timeout while emptying the Plants..."
+                        title: "Error!"
+                  - text_sensor.template.publish:
+                      id: errorLog
+                      state: "[ERROR] Timeout while emptying the Plants..."
+            - switch.turn_off: pumpDown
+
+  - platform: gpio
+    pin: GPIO05
+    id: 'heater'
+    name: "Fish Water heater"
+    inverted: true
+
+  - platform: gpio
+    pin: GPIO19
+    id: 'helios'
+    name: "Plant Sun Light"
+    inverted: true
+
+  - platform: template
+    id: 'automationLoop'
+    name: "Automatic Cycling Loop"
+    optimistic: true
+
+# --- [ Sensors ] ---
+sensor:
+  # Tank temperature
+  - platform: dallas
+    index : 0
+    id: 'plantTankTemp'
+    name: "Plant Tank Temperature"
+    on_value:
+      component.update: lcdDisplay
+  
+  # Water flow
+  - platform: pulse_counter
+    pin: GPIO18
+    id: 'flowTurbineUp'
+    name: "Water flow (to Plants)"
+    update_interval: 1s
+    filters:
+      - lambda: return (x / 333.0);
+    unit_of_measurement: "l/min"
+  
+  # Ambient Light
+  - platform: tsl2561
+    id: 'ambientLight'
+    name: "Ambient Light"
+    update_interval: 1s
+
+  # Water depth
+  - platform: ultrasonic
+    id: 'fishWaterDepth'
+    name: "Fish Water depth"
+    trigger_pin: GPIO27
+    echo_pin: GPIO36
+    update_interval: 1s
+    filters:
+      # liters_volume - ((x / meter_height) * liters_volume)
+      - lambda: "return ((1 - (x / 0.2)) * 18.75);"
+    unit_of_measurement: "l"
+    on_value:
+      component.update: lcdDisplay
+    
+  # Root percentage
+  - platform: template
+    id: 'rootPercentage'
+    name: "Root percentage"
+    filters:
+      # Make sure value is between 0 to 100
+      - lambda: "return ((x < 0) ? 0 : ((x > 100) ? 100 : x));"
+    unit_of_measurement: "%"
+    on_value:
+      component.update: lcdDisplay
+  
+  # Time to low Tide
+  - platform: template
+    id: 'toLowTideTime'
+    name: "To Low Tide Time"
+    unit_of_measurement: "s"
+
+  # Time to high Tide
+  - platform: template
+    id: 'toHighTideTime'
+    name: "To High Tide Time"
+    unit_of_measurement: "s"
+
+# --- [ Text sensors ] ---
+text_sensor:
+  # Plant tank level
+  - platform: template
+    id: 'plantTankLevel'
+    name: "Plant Tank level"
+    update_interval: 1s
+    lambda: |-
+      if (id(plantTankFull).state && !id(plantTankEmpty).state) return {"FULL"};
+      if (!id(plantTankFull).state && id(plantTankEmpty).state) return {"EMPTY"};
+      if (!id(plantTankFull).state && !id(plantTankEmpty).state) return {"MIDWAY"};
+      return {"ERROR"};
+
+  # Error Log
+  - platform: template
+    id: 'errorLog'
+    name: "Error Log"
+    update_interval: never
+
+# --- [ Binary sensors ] ---
+binary_sensor:
+  # Plant tank level sensors
+  - platform: gpio
+    pin: GPIO39
+    id: 'plantTankFull'
+    internal: true
+    filters:
+      - invert
+      - delayed_on: 3s
+      - delayed_off: 3s
+    # Check if tank gains water without pump
+    on_press:
+      - if:
+          condition:
+            - switch.is_off: pumpUp
+          then:
+            - homeassistant.service:
+                service: notify.notify
+                data:
+                  message: "Plants are gaining water..."
+                  title: "Warning!"
+            - text_sensor.template.publish:
+                id: errorLog
+                state: "[WARNING] Plants are gaining water..."
+    # Check if tank looses water without pump
+    on_release:
+      - if:
+          condition:
+            - switch.is_off: pumpDown
+          then:
+            - homeassistant.service:
+                service: notify.notify
+                data:
+                  message: "Plants are loosing water..."
+                  title: "Warning!"
+            - text_sensor.template.publish:
+                id: errorLog
+                state: "[WARNING] Plants are loosing water..."
+    
+  - platform: gpio
+    pin: GPIO35
+    id: 'plantTankEmpty'
+    internal: true
+    filters:
+      - delayed_on: 3s
+      - delayed_off: 3s
+    # Check if tank looses water without pump
+    on_press:
+      - if:
+          condition:
+            - switch.is_off: pumpDown
+          then:
+            - homeassistant.service:
+                service: notify.notify
+                data:
+                  message: "Plants are loosing water..."
+                  title: "Warning!"
+            - text_sensor.template.publish:
+                id: errorLog
+                state: "[WARNING] Plants are loosing water..."
+    # Check if tank gains water without pump
+    on_release:
+      - if:
+          condition:
+            - switch.is_off: pumpUp
+          then:
+            - homeassistant.service:
+                service: notify.notify
+                data:
+                  message: "Plants are gaining water..."
+                  title: "Warning!"
+            - text_sensor.template.publish:
+                id: errorLog
+                state: "[WARNING] Plants are gaining water..."
+
+  # Motion sensor
+  #- platform: gpio
+  #  pin: GPIO27
+  #  id: 'motion'
+  #  on_press:
+  #    - switch.turn_off: helios
+  #  internal: true
+
+  # LCD buttons
+  - platform: gpio
+    id: 'lcdPreviousPage'
+    pin:
+      number: GPIO25
+      mode:
+        input: true
+        pullup: true
+    on_press:
+      display.page.show_previous: lcdDisplay
+    internal: true
+
+  - platform: gpio
+    id: 'lcdNextPage'
+    pin:
+      number: GPIO33
+      mode:
+        input: true
+        pullup: true
+    on_press:
+      display.page.show_next: lcdDisplay
+    internal: true
+  
+  # Connection to HA
+  - platform: status
+    id: 'homeAssistantConnection'
+    internal: true
+
+# --- [ Fonts ] ---
+font:
+  - file: "gfonts://Roboto"
+    id: roboto
+    size: 20
+
+# --- [ Display ] ---
+display:
+  - platform: ssd1306_i2c
+    id: 'lcdDisplay'
+    model: "SSD1306 128x64"
+    pages:
+      - lambda: |-
+          it.print(0, 0, id(roboto), "Plant roots:");
+          it.printf(5, 25, id(roboto), "%i %%", id(rootPercentage).state);
+      - lambda: |-
+          it.print(0, 0, id(roboto), "Plant Tank temperature:");
+          it.printf(5, 25, id(roboto), "%.1f °C", id(plantTankTemp).state);
+      - lambda: |-
+          it.print(0, 0, id(roboto), "Water depth:");
+          it.printf(5, 25, id(roboto), "%.1f l", id(fishWaterDepth).state);
