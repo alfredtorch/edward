@@ -47,13 +47,10 @@ The current prototype remains on the following setup.
 </p>
 
 The core goals of this software development phase are:
-• Create the Edward Controller, which is responsible for maintaining optimal
-conditions conducive to the health of aquatic life and plant growth.
-• Design a User Interface that assists users in configuring their stations and
-managing basic settings with ease.
-• Facilitate remote connectivity through the IoT Integrator, enabling access
-and control over the internet.
-• Design a digital twin for virtual testing the system – Testing on a real station.
+
+• Create the Edward Controller, which is responsible for maintaining optimal conditions conducive to the health of aquatic life and plant growth.
+• Design a User Interface that assists users in configuring their stations and managing basic settings with ease.
+• Facilitate remote connectivity through the IoT Integrator, enabling access and control over the internet. • Design a digital twin for virtual testing the system – Testing on a real station.
 
 ### Cycle Control
 The Edward Controller's main function is to oversee the plant tank's automated tidal process. The software is engineered for reliability, crafted to maintain functionality in the face of technical challenges such as power outages and sensor errors. Operational scenarios are meticulously detailed within a truth table and in the analysis of Worst-Case Scenarios.
