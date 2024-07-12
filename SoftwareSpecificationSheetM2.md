@@ -220,7 +220,9 @@ DC : Don’t care - ISSUE: 2 – no operation (faulty) / 1 – critical sensor s
 restriction (automatic)
 
 
-External perturbation occurs when a state change in the water level sensors (PTB,
+__External perturbation__
+
+occurs when a state change in the water level sensors (PTB,
 PTT) during a no-pumping phase. This abnormal sensor behavior (indicating a fault)
 can also result from an unexpected water loss or gain of the plant tank.
 A faulty sensor should be detected during the rising phase by checking the flow
@@ -346,8 +348,13 @@ be to provide users with daily and monthly views of temperature data etc., inclu
 minimum and maximum values recorded over these periods. This feature would enhance user experience and provide valuable insights into the system's
 performance for predictive maintenance.
 
-### Wifi Connectivity
 
+## Local Gui
+<p align="center">
 <img width="1715" alt="image" src="https://github.com/user-attachments/assets/bd43dcf3-06e6-4756-b76e-ba46d383ab13">
 
 <img width="1615" alt="image" src="https://github.com/user-attachments/assets/90b8238d-7073-4a30-8de0-88b818f7d045">
+</p>
+
+### Wifi Connectivity
+
