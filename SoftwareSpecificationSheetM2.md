@@ -184,6 +184,7 @@ During rising tide, the flow meter can calculate the total water displacement.
 </p>
 
 __User Defined Tidal Height (Optional__
+
 This development objective ensures that the water displacement during a rising tide
 is adjustable. Consequently, the limit of the TOP state is no longer bound by the
 level sensor but is instead determined by the adjusted rising time or by using a flow
@@ -193,7 +194,8 @@ requires more complex scheduling and will remain functional as long as the plant
 level sensors stay in the same position. If the sensors are moved, a complete
 calibration cycle will be necessary.
 
-__ Automatic Tide Cycle__
+__Automatic Tide Cycle__
+
 This elementary process loops in an endless cycle of high and low tides in the plant
 tank. Users can define the settings of the tide (High-Low Tide Duration & User-
 Defined Tidal Height).
@@ -212,6 +214,8 @@ comprehensive overview:
 |     |     |        | Falling   | BOTTOM        | Pump & Timer Control           | 0     |
 | 1   | 1   | Top    | Rising    | WAIT→MIDDLE   | Tide done (Wait)               | 0     |
 |     |     |        | Falling   | MIDDLE        | Pump & Timer Control           | 0     |
+
+
 DC : Don’t care - ISSUE: 2 – no operation (faulty) / 1 – critical sensor situation (automatic) / 0 – no
 restriction (automatic)
 
@@ -238,3 +242,112 @@ Should either set of limits be reached, the system is programmed to either trans
 into a faulty state or operate with reduced functionality, alerting to a critical sensor
 situation:
 
+| Direction | Level   | Transition     | Flow Meter | Issue                                                         |
+|-----------|---------|----------------|------------|---------------------------------------------------------------|
+| Rising    | Bottom  | Bottom→Middle  | OK         | Faulty PTB Sensor (or water-leak) → 1                         |
+|           |         |                | NOK        | Faulty rising pump or not enough water → 2                    |
+| Rising    | Middle  | Middle→Top     | OK         | Faulty PTT Sensor (or water leak) → 1                         |
+|           |         |                | NOK        | Faulty rising pump or not enough water → 2                    |
+| Falling   | Top     | Top→Middle     | DC         | Wait if Top→Bottom (only PTT faulty) → 1                      |
+|           |         |                |            | else (Faulty falling pump, clogged circuit) → 2               |
+| Falling   | Middle  | Middle→Bottom  | DC         | If Top→Middle before (only PTB faulty) → 1                    |
+|           |         |                |            | else (risk of overfill at next rising) → 2                    |
+
+DC : Don’t care - ISSUE: 2 – no operation (faulty) / 1 – critical sensor situation (automatic) / 0 – no
+restriction (automatic)
+
+__Manual Mode__
+
+In Manual Mode, users are granted direct control over the pumps through both the
+User Interface and remote access. However, this mode does not allow the user to
+bypass any of the safety features established in the Automatic Tidal Mode.
+
+| Control           | Description                                                            |
+|-------------------|------------------------------------------------------------------------|
+| Fill Plant Tank   | Fills the plant tank to capacity and maintains the water level.        |
+| Drain Plant Tank  | Empties the plant tank completely and maintains this state.            |
+| Pause Cycle       | Halts all pumping actions, preserving the current water level.         |
+| Fast Cycle        | Turn rising-falling pump on.                                           |
+| Force Calibration | Execute a complete calibration cycle (→ automatic tidal)               |
+| Switch Light      | Toggles the current state of the grow light on or off.                 |
+| Switch Heater     | Toggles the current state of the aquarium heater on or off.            |
+
+The return to Automatic Tidal Mode should be triggered based on time-out or user
+interaction. At that moment, the system should define it water's level state to
+properly restart.
+
+__Faulty Mode__
+
+Faulty Mode is activated exclusively in response to a critical system issue that
+typically requires manual intervention for resolution. This may involve tasks such as
+repairing a sensor or readjusting water levels. When in Faulty Mode, the system
+enters an Overwrite state, where only pumping commands are accessible through
+the local GUI.
+
+To ensure the system exits Faulty Mode correctly, specific procedures must be
+followed. These procedures typically involve verifying the resolution of the issue,
+calibration parameters and reestablishing normal operational mode.
+
+__Monitoring Values__
+
+**State Machine**
+
+| Mode         | Actions and Options                                             |
+|--------------|-----------------------------------------------------------------|
+| Manual Mode: | Fill Plant Tank - Drain Plant Tank - Pause Cycle - Fast Cycle - Force Calibration - Switch Light - Switch Heater |
+| State Machine| Calibration - Automatic Manual - Faulty                         |
+| Issue        | 0 OK - 1 Critical - 2 Faulty                                    |
+| Latest Log Entry | Time & Date Action (e.g., "22.12.23 7h04 Rising Tide...")    |
+
+**Duration**
+
+| Category             | Specification                                                  |
+|----------------------|----------------------------------------------------------------|
+| Station ID - Name    | Generate ID (from chip) and set name for identification        |
+| Version              | Firmware Version                                               |
+| Time                 | Hours and Minutes and Sunset-Sunrise / No Set                  |
+| High Tide Duration   | By User in Minutes (limit by Max. High Tide Duration)          |
+| Low Tide Duration    | By User in Minutes (limit by Max. Low Tide Duration)           |
+| Critical Tide Duration| Equals Max. Low Tide Duration (for max. siphon effect during issue) |
+| Bottom→Middle        | By measuring[^1] (limit by Max. Bottom-Middle Duration) in Seconds|
+| Middle→Top           | By measuring[^1] (limit by Max. Middle-Top Duration) in Seconds   |
+| Top→Middle           | By measuring[^1] (limit by Max. Top-Middle Duration) in Seconds   |
+| Middle→Bottom        | By measuring[^1] (limit by Max. Middle-Bottom Duration) in Seconds|
+| Manual→Automatic Mode| By User in Minutes (limit by Max. Manual Mode Duration)        |
+| Growing Lights       | By User in Minutes (limit by Max. Light per 24h)               |
+| Usage pump, lights   | By counting operating hours counter (Reset per device GUI)     |
+
+[^1]: Calibration or continuously
+
+
+**System Related**
+
+| Name                | Units                                                                 |
+|---------------------|-----------------------------------------------------------------------|
+| Capacity Plant Tank | Liters measured by the flow meter during calibration                  |
+| Current Volume      | Liters estimated based on time (falling tide) or rising tide (flow meter) |
+| Level Direction     | Bottom-Middle-Top                                                     |
+| Water Temperature   | Heating switch on off based on min and max temperature range          |
+| Heater Pump Output  | Falling ON OFF Rising ON OFF                                          |
+| Digital State Input | PTB ON OFF / PTT ON OFF / Flow Meter                                  |
+| Tidal Height        | If user-defined height in % or Liters (not mandatory)                 |
+| Flow Meter          | OK (>1/minute) - NOK                                                  |
+| Ambient Air Quality | Readings from BME680 (°H, %C, kPa-CO2)                                |
+
+
+While the current focus is on establishing core functionalities, more advanced
+monitoring capabilities, such as pH level tracking and the option to export data in
+CSV format, are planned for a later phase of development. These features will
+primarily be cloud-based to leverage enhanced data processing and storage
+capabilities.
+However, if integrating historical temperature data proves straightforward, this
+enhancement could be included in the current development phase. The aim would
+be to provide users with daily and monthly views of temperature data etc., including
+minimum and maximum values recorded over these periods. This feature would enhance user experience and provide valuable insights into the system's
+performance for predictive maintenance.
+
+### Wifi Connectivity
+
+<img width="1715" alt="image" src="https://github.com/user-attachments/assets/bd43dcf3-06e6-4756-b76e-ba46d383ab13">
+
+<img width="1615" alt="image" src="https://github.com/user-attachments/assets/90b8238d-7073-4a30-8de0-88b818f7d045">
