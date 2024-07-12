@@ -10,9 +10,9 @@ The current prototype operates on an Ebb and Flow (Media-based) Aquaponics syste
 </p>
 
 The prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi . The main challenges faced by the current system include:
-•	not a standalone system (Raspberrypi + Station Controller)
-•	no option for easy remote monitoring of the system (NAT, DNS)
-•	missing control options (regular self-calibration, failsafe mode)
+..*	not a standalone system (Raspberrypi + Station Controller)
+..*	no option for easy remote monitoring of the system (NAT, DNS)
+..*	missing control options (regular self-calibration, failsafe mode)
 
 <p align="center">
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/687ef834-52ff-49b4-84f4-f12f1e8b8458">
@@ -177,7 +177,7 @@ the system will trigger a faulty system.
 During rising tide, the flow meter can calculate the total water displacement.
 
 <p align="center">
-<img width="1021" alt="image" src="https://github.com/user-attachments/assets/fbb49d11-00e8-427f-9129-7f9ada2a6f0a">
+<img width="821" alt="image" src="https://github.com/user-attachments/assets/fbb49d11-00e8-427f-9129-7f9ada2a6f0a">
 </p>
 
 __User Defined Tidal Height (Optional__
@@ -219,20 +219,21 @@ restriction (automatic)
 
 __External perturbation__
 
-occurs when a state change in the water level sensors (PTB,
-PTT) during a no-pumping phase. This abnormal sensor behavior (indicating a fault)
-can also result from an unexpected water loss or gain of the plant tank.
+occurs when a state change in the water level sensors (PTB,PTT) during a no-pumping phase. This abnormal sensor behavior (indicating a fault) can also result from an unexpected water loss or gain of the plant tank.
+
 A faulty sensor should be detected during the rising phase by checking the flow
 meter and timer’s benchmarks. Even when the sensors are not functioning (critical
 sensor situation), if previously calibrated accurately, it can continue to operate using
-the flow meter for the rising tide and a pre-set timer for the falling tide. To utilize the
-siphon effect, a long low tide timer is employed. This issue should be resolved once
+the flow meter for the rising tide and a pre-set timer for the falling tide. 
+
+To utilize the siphon effect, a long low tide timer is employed. This issue should be resolved once
 maintenance occurs, with a complete calibration cycle required to reset the system.
 This situation should be addressed swiftly as the absence of overfill protection and
 the potential for the pump to run dry could compromise system integrity. Therefore,
 the user should be notified about the reduced safety mechanism.
-Error management is further supported by timeout counters for different
-operational phases. Transition durations are critically evaluated against two types
+
+
+Error management is further supported by timeout counters for different operational phases. Transition durations are critically evaluated against two types
 of limits:
 • Variable values derived from calibration cycle mode.
 • Hard-coded values serve as an additional layer of security (especially during
@@ -347,11 +348,60 @@ performance for predictive maintenance.
 
 
 ## Local Gui
-<p align="center">
-<img width="1715" alt="image" src="https://github.com/user-attachments/assets/bd43dcf3-06e6-4756-b76e-ba46d383ab13">
+This interface will be designed as a web page hosted on a local web server, functioning independently without requiring external internet connectivity. This design choice allows users to conveniently update and configure various hardware components of the system, such as pumps and sensors.
 
-<img width="1615" alt="image" src="https://github.com/user-attachments/assets/90b8238d-7073-4a30-8de0-88b818f7d045">
+If a faulty state occurs, the user can override the timers and sensors and operate the machine without any safety mechanism.
+
+The control functionalities provided will be consistent with those described in the Tidal Control's Manual Mode. Additionally, the interface will facilitate basic operations, including time synchronization. The attached images serve as preliminary sketches, providing an initial visual concept of what the interface might look like and how it might operate.
+
+<p align="center">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/bd43dcf3-06e6-4756-b76e-ba46d383ab13">
+<br>
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/90b8238d-7073-4a30-8de0-88b818f7d045">
 </p>
 
-### Wifi Connectivity
+## Wifi Connectivity
+On first startup, a local access point for Wi-Fi connection should be provided. Doing
+so, the user sets up necessary settings through a web page interface. Therefore, this
+user interface should be always available regardless of the current state.
+
+## IoT Integrator
+For remote access capabilities, the system is designed to support data exchange
+and basic control operations/settings through a potential platform like
+Thingsboard. This choice enables efficient device management, data collection,
+processing, and visualization, facilitating integration while also aiming to reduce
+costs.
+
+Key features will include data telemetry and the possibility of implementing Over-
+The-Air (OTA) updates to ensure the system remains up-to-date and secure. All
+connections will be safeguarded to protect user data from unauthorized access.
+The remote interface will offer the same command capabilities as found in Manual
+Mode. Additionally, crucial parameters, such as tide definitions, will be configurable
+through this interface, providing administrators with comprehensive remote control
+over their different stations. In a later development phase, this data should be
+integrated in a user-friendly application providing maintenance reminders and
+push notifications.
+
+## Development Organisation
+"This specification document not only outlines technical propositions but also remains open to alternative approaches in development. To ensure efficiency and maintainability, the programming strategy should incorporate the following principles:
+• Avoiding large blocks of nested if-else statements in favor of concise and effective routines.
+• Adopting a C++ programming approach to benefit from structured and object-oriented programming, which encourages the creation of reusable and modular code.
+• Ensuring robustness and scalability to support future enhancements, such as intensity management for grow lights and the inclusion of additional control options.
+•  Structuring the development into divided milestones to reduce complexity."
+As mentioned earlier, specific functionalities and variables, including pinouts and
+duration settings, may be hard-coded during this phase of development for
+simplicity and efficiency. Concerning the state machine and various critical levels,
+there is a potential for errors. We welcome any corrections or suggestions for
+improvement in these areas.
+Flexibility for improvement and adaptation of the described processes is crucial.
+For programming inspiration, a list of potential libraries is attached to this
+document.
+For testing, a working prototype can be made available, or a remote laboratory
+setup with a webcam can be used. However, a more modern approach might
+involve implementing a digital twin. This would allow for thorough testing of all
+different states and scenarios without the complications of physical hardware.
+
+## Licence
+
+
 
