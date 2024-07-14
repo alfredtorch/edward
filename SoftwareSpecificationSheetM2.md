@@ -56,7 +56,7 @@ The core goals of this software development phase are:
 The Edward Controller's main function is to oversee the plant tank's automated tidal process. The software is engineered for reliability, crafted to maintain functionality in the face of technical challenges such as power outages and sensor errors. Operational scenarios are meticulously detailed within a truth table and in the analysis of Worst-Case Scenarios.
 
 <p align="center">
-<img width="1021" alt="image" src="https://github.com/user-attachments/assets/e7eee312-7290-4c80-b8d1-fdf73589691e">
+<img width="721" alt="image" src="https://github.com/user-attachments/assets/e7eee312-7290-4c80-b8d1-fdf73589691e">
 </p>
 
 ### System  Considerations
