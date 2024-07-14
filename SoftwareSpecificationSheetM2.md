@@ -9,15 +9,14 @@ The current prototype operates on an Ebb and Flow (Media-based) Aquaponics syste
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/c0128cf4-0fa1-48f5-b6dd-2ed57a1dbdbe">
 </p>
 
-The prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi . The main challenges faced by the current system include:
-..*	not a standalone system (Raspberrypi + Station Controller)
-..*	no option for easy remote monitoring of the system (NAT, DNS)
-..*	missing control options (regular self-calibration, failsafe mode)
+The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi . The main challenges faced by the current system include:
+*	not a standalone system (Raspberrypi + Station Controller)
+*	no option for easy remote monitoring of the system (NAT, DNS)
+*	missing control options (regular self-calibration, failsafe mode)
 
 <p align="center">
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/687ef834-52ff-49b4-84f4-f12f1e8b8458">
 </p>
-
 
 ### System Components
 
@@ -25,13 +24,13 @@ The current prototype remains on the following setup.
 | Category     | Component                 | Description                              | Type                  |
 |--------------|---------------------------|------------------------------------------|-----------------------|
 | **Plant Tank** | 1x Falling Tide Pump      | Pumps from plants to fish                | SSR 220V - PIO        |
-|              | 1x Water Level Top (PTT)  | Sense if the max. volume is reached      |                       |
-|              | 1x Water Level Bottom (PTB) | Sense if the max. volume is reached    |                       |
-|              | 1x Growing LED (optional) |                                          | SSR 220V - PIO        |
+|              | 1x Water Level Top (PTT)  | Sense if the max. volume is reached      | Replaced by Fuel Gauge Sensor                      |
+|              | 1x Water Level Bottom (PTB) | Sense if the max. volume is reached    | Replaced by Fuel Gauge Sensor                      |
+|              | 1x Growing LED (optional) | Basic AC Control, no dimming                                         | SSR 220V - PIO        |
 |              | 1x Water Temperature Sensor | Measure water temperature               | 1-Wire: DS18B20       |
 | **Fish Tank**  | 1x Rising Tide Pump        | Pumps from fish to plant                 | SSR 220V - PIO        |
 |              | 1x Flow Meter (optional)   | Turbine based                            | Interrupt PCTN²       |
-|              | 1x Aquarium Heater         | Heat the water                           | SSR 220V - PIO        |
+|              | 1x Aquarium Heater (optional)        | Heat the water                           | SSR 220V - PIO        |
 |              | 1x Air Pump                |                                          | 220V - NC/Always ON   |
 | **Accessory** | 1x Gas sensor (Optional)   | For Air Monitoring                       | BME680                |
 |              | 1x OLED Display (Optional) | For User Interface                       |                       |
@@ -48,9 +47,10 @@ The current prototype remains on the following setup.
 
 The core goals of this software development phase are:
 
-• Create the Edward Controller, which is responsible for maintaining optimal conditions conducive to the health of aquatic life and plant growth.
-• Design a User Interface that assists users in configuring their stations and managing basic settings with ease.
-• Facilitate remote connectivity through the IoT Integrator, enabling access and control over the internet. • Design a digital twin for virtual testing the system – Testing on a real station.
+* Create the Edward Controller, which is responsible for maintaining optimal conditions conducive to the health of aquatic life and plant growth.
+* Design a User Interface that assists users in configuring their stations and managing basic settings with ease.
+* Facilitate remote connectivity through the IoT Integrator, enabling access and control over the internet.
+* Design a digital twin for virtual testing the system – Testing on a real station.
 
 ### Cycle Control
 The Edward Controller's main function is to oversee the plant tank's automated tidal process. The software is engineered for reliability, crafted to maintain functionality in the face of technical challenges such as power outages and sensor errors. Operational scenarios are meticulously detailed within a truth table and in the analysis of Worst-Case Scenarios.
