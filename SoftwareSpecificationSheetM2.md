@@ -15,7 +15,7 @@ The current prototype system is powered by Home Assistant with ESPHome running o
 *	missing control options (regular self-calibration, failsafe mode)
 
 <p align="center">
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/687ef834-52ff-49b4-84f4-f12f1e8b8458">
+<img width="686" alt="image" src="https://github.com/user-attachments/assets/687ef834-52ff-49b4-84f4-f12f1e8b8458">
 </p>
 
 ### System Components
