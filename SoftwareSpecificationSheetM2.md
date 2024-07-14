@@ -56,18 +56,10 @@ The core goals of this software development phase are:
 The Edward Controller's main function is to oversee the plant tank's automated tidal process. The software is engineered for reliability, crafted to maintain functionality in the face of technical challenges such as power outages and sensor errors. Operational scenarios are meticulously detailed within a truth table and in the analysis of Worst-Case Scenarios.
 
 <p align="center">
-<img width="341" alt="image" src="https://github.com/user-attachments/assets/72dd4478-94f7-4cf7-abf4-6ff370eb1828">
+<img width="1021" alt="image" src="https://github.com/user-attachments/assets/e7eee312-7290-4c80-b8d1-fdf73589691e">
 </p>
 
-This table  represents the logical states of the sensors PTT and PTB, along with what each combination of states indicates.
-| PTT | PTB | Indicates         |
-|-----|-----|-------------------|
-| 0   | 0   | BOTTOM (0%)       |
-| 0   | 1   | MIDDLE            |
-| 1   | 0   | Faulty Condition  |
-| 1   | 1   | TOP (100%)        |
-
-### System Inherit Requirements
+### System  Considerations
  __Syphon__
  
 Due to the falling pump's elevated position above the fish tank's outlet, a natural
@@ -82,11 +74,7 @@ bottom water level sensor and the drainage pump exit.
 
 __Input Processing__
 
-The inputs received from the water level sensors require filtering to ensure
-accuracy. Implementing a debounce logic will mitigate the effects of transient
-fluctuations, while taking the mean value from a series of observations will help to
-nullify any disturbances caused by water movement. This approach is designed to
-stabilize the readings and avoid false triggers that could result from wavegenerated
+The inputs received from the water level sensors require filtering and debouncing. This approach is designed to stabilize the readings and avoid false triggers that could result from wavegenerated
 perturbations.
 
 __Plants Illumination__
@@ -96,8 +84,7 @@ which automates the grow lights, toggling them on and off as programmed.
 Although the current iteration lacks the functionality to adjust light intensity, the
 timing of the grow light is synchronized with the natural patterns of sunrise and
 sunset. This synchronization provides the essential dark periods that plants require
-for their rest and recovery during the night, ensuring a natural growth cycle is
-maintained.
+for their rest and recovery during the nigh.
 
 __Safety Mechansim__
 
@@ -170,17 +157,17 @@ This mode measures the total water displacement (Vinitial). It is a critical pro
 allows for the assessment of water movement and ensures that all system
 components are functioning correctly. During this process, time out values are
 obtained for the later automatic monitoring:
-• Rising time = Bottom-Middle + Middle-Top
-• Falling time = Top-Middle + Middle-Bottom
+* Rising time = Bottom-Middle + Middle-Top
+* Falling time = Top-Middle + Middle-Bottom
 If in any case a pumping operation reaches the timer of maximum duration (hardcoded),
 the system will trigger a faulty system.
 During rising tide, the flow meter can calculate the total water displacement.
 
 <p align="center">
-<img width="821" alt="image" src="https://github.com/user-attachments/assets/fbb49d11-00e8-427f-9129-7f9ada2a6f0a">
+<img width="721" alt="image" src="https://github.com/user-attachments/assets/fbb49d11-00e8-427f-9129-7f9ada2a6f0a">
 </p>
 
-__User Defined Tidal Height (Optional__
+__User Defined Tidal Height (Optional)__
 
 This development objective ensures that the water displacement during a rising tide
 is adjustable. Consequently, the limit of the TOP state is no longer bound by the
@@ -197,7 +184,8 @@ This elementary process loops in an endless cycle of high and low tides in the p
 tank. Users can define the settings of the tide (High-Low Tide Duration & User-
 Defined Tidal Height).
 Doing so, the duration of a complete tide cycle is defined by:
-• Total Tide Duration = Rising Time + Duration High Tide + Falling Time +
+" Total Tide Duration = Rising Time + Duration High Tide + Falling Time +
+
 Duration Low Tide
 In terms of state system and monitoring, the following truth table provides a
 comprehensive overview:
@@ -219,7 +207,7 @@ restriction (automatic)
 
 __External perturbation__
 
-occurs when a state change in the water level sensors (PTB,PTT) during a no-pumping phase. This abnormal sensor behavior (indicating a fault) can also result from an unexpected water loss or gain of the plant tank.
+This occurs when a state change in the water level sensors (PTB,PTT) during a no-pumping phase. This abnormal sensor behavior (indicating a fault) can also result from an unexpected water loss or gain of the plant tank.
 
 A faulty sensor should be detected during the rising phase by checking the flow
 meter and timer’s benchmarks. Even when the sensors are not functioning (critical
@@ -235,9 +223,10 @@ the user should be notified about the reduced safety mechanism.
 
 Error management is further supported by timeout counters for different operational phases. Transition durations are critically evaluated against two types
 of limits:
-• Variable values derived from calibration cycle mode.
-• Hard-coded values serve as an additional layer of security (especially during
+* Variable values derived from calibration cycle mode.
+* Hard-coded values serve as an additional layer of security (especially during
 calibration and manual operation).
+
 Should either set of limits be reached, the system is programmed to either transition
 into a faulty state or operate with reduced functionality, alerting to a critical sensor
 situation:
@@ -273,7 +262,7 @@ bypass any of the safety features established in the Automatic Tidal Mode.
 | Switch Heater     | Toggles the current state of the aquarium heater on or off.            |
 
 The return to Automatic Tidal Mode should be triggered based on time-out or user
-interaction. At that moment, the system should define it water's level state to
+interaction. At that moment, the system should remember it water's level state to
 properly restart.
 
 __Faulty Mode__
@@ -301,21 +290,21 @@ __Monitoring Values__
 
 **Duration**
 
-| Category             | Specification                                                  |
-|----------------------|----------------------------------------------------------------|
-| Station ID - Name    | Generate ID (from chip) and set name for identification        |
-| Version              | Firmware Version                                               |
-| Time                 | Hours and Minutes and Sunset-Sunrise / No Set                  |
-| High Tide Duration   | By User in Minutes (limit by Max. High Tide Duration)          |
-| Low Tide Duration    | By User in Minutes (limit by Max. Low Tide Duration)           |
-| Critical Tide Duration| Equals Max. Low Tide Duration (for max. siphon effect during issue) |
-| Bottom→Middle        | By measuring[^1] (limit by Max. Bottom-Middle Duration) in Seconds|
-| Middle→Top           | By measuring[^1] (limit by Max. Middle-Top Duration) in Seconds   |
-| Top→Middle           | By measuring[^1] (limit by Max. Top-Middle Duration) in Seconds   |
-| Middle→Bottom        | By measuring[^1] (limit by Max. Middle-Bottom Duration) in Seconds|
-| Manual→Automatic Mode| By User in Minutes (limit by Max. Manual Mode Duration)        |
-| Growing Lights       | By User in Minutes (limit by Max. Light per 24h)               |
-| Usage pump, lights   | By counting operating hours counter (Reset per device GUI)     |
+| Category             | Specification                                                  | Notes |
+|----------------------|----------------------------------------------------------------|-----|
+| Station ID - Name    | Generate ID (from chip) and set name for identification        | |
+| Version              | Firmware Version                                               | |
+| Time                 | Hours and Minutes and Sunset-Sunrise / No Set                  | |
+| High Tide Duration   | By User in Minutes (limit by Max. High Tide Duration)          | |
+| Low Tide Duration    | By User in Minutes (limit by Max. Low Tide Duration)           | |
+| Critical Tide Duration| Equals Max. Low Tide Duration (for max. siphon effect during issue) | |
+| Bottom→Middle        | By measuring[^1] (limit by Max. Bottom-Middle Duration) in Seconds| |
+| Middle→Top           | By measuring[^1] (limit by Max. Middle-Top Duration) in Seconds   | |
+| Top→Middle           | By measuring[^1] (limit by Max. Top-Middle Duration) in Seconds   | |
+| Middle→Bottom        | By measuring[^1] (limit by Max. Middle-Bottom Duration) in Seconds| |
+| Manual→Automatic Mode| By User in Minutes (limit by Max. Manual Mode Duration)        | |
+| Growing Lights       | By User in Minutes (limit by Max. Light per 24h)               | Optional |
+| Usage pump, lights   | By counting operating hours counter (Reset per device GUI)     | |
 
 [^1]: Calibration or continuously
 
@@ -335,16 +324,9 @@ __Monitoring Values__
 | Ambient Air Quality | Readings from BME680 (°H, %C, kPa-CO2)                                |
 
 
-While the current focus is on establishing core functionalities, more advanced
-monitoring capabilities, such as pH level tracking and the option to export data in
-CSV format, are planned for a later phase of development. These features will
-primarily be cloud-based to leverage enhanced data processing and storage
-capabilities.
-However, if integrating historical temperature data proves straightforward, this
-enhancement could be included in the current development phase. The aim would
-be to provide users with daily and monthly views of temperature data etc., including
-minimum and maximum values recorded over these periods. This feature would enhance user experience and provide valuable insights into the system's
-performance for predictive maintenance.
+While the current focus is on establishing core functionalities, more advanced monitoring capabilities, such as pH level tracking and the option to export data in CSV format, are planned for a later phase of development. These features will primarily be cloud-based to leverage enhanced data processing and storage capabilities.
+
+However, if integrating historical temperature data proves straightforward, this enhancement could be included in the current development phase. The aim would be to provide users with daily and monthly views of temperature data etc., including minimum and maximum values recorded over these periods. This feature would enhance user experience and provide valuable insights into the system's performance for predictive maintenance.
 
 
 ## Local Gui
@@ -384,10 +366,10 @@ push notifications.
 
 ## Development Organisation
 "This specification document not only outlines technical propositions but also remains open to alternative approaches in development. To ensure efficiency and maintainability, the programming strategy should incorporate the following principles:
-• Avoiding large blocks of nested if-else statements in favor of concise and effective routines.
-• Adopting a C++ programming approach to benefit from structured and object-oriented programming, which encourages the creation of reusable and modular code.
-• Ensuring robustness and scalability to support future enhancements, such as intensity management for grow lights and the inclusion of additional control options.
-•  Structuring the development into divided milestones to reduce complexity."
+* Avoiding large blocks of nested if-else statements in favor of concise and effective routines.
+* Adopting a C++ programming approach to benefit from structured and object-oriented programming, which encourages the creation of reusable and modular code.
+* Ensuring robustness and scalability to support future enhancements, such as intensity management for grow lights and the inclusion of additional control options.
+*  Structuring the development into divided milestones to reduce complexity."
 As mentioned earlier, specific functionalities and variables, including pinouts and
 duration settings, may be hard-coded during this phase of development for
 simplicity and efficiency. Concerning the state machine and various critical levels,
