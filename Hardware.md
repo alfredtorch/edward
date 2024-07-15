@@ -84,7 +84,7 @@ Features:
 ## 8 SSR Rebel Channel
 8 AC 2Amp Channel
 <p align="center">
-<img width="942" alt="image" src="https://github.com/user-attachments/assets/2f5ee228-50b8-4190-a45a-cc2ea2bf2bc4">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/2f5ee228-50b8-4190-a45a-cc2ea2bf2bc4">
 </p>
 
 # Components
