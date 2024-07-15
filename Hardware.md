@@ -9,7 +9,7 @@ Tasmota and Esphome Compatible
 Open Source
 On Board Power Regulator
 <p align="center">
-<img width="1000" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/caf6568e-a54c-49b0-b28f-7a82f24329e7">
+<img width="800" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/caf6568e-a54c-49b0-b28f-7a82f24329e7">
 </p>
 
 | Pin  | Option 1      | Option 2      | Note                       |
@@ -45,7 +45,8 @@ On Board Power Regulator
 
 ### Version
 | Model | Notes |
-| ---- | ---- |
+| ---- | ---- | 
+| GreenHouse V1 | Issue Flow Meter, 4 External Power Control (AC-DC) |
 | GreenHouse V2 | Issue Flow Meter, 4 External Power Control (AC-DC) |
 | Fishtank | Issue Flow Meter, 4 On Board Mosfet |
 ## Helios
@@ -75,7 +76,10 @@ Features:
 2 PWM Output
 1 Water Flow + Temperature Meter
 
-<img width="651" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/26cd3d54-dae7-4091-ae38-5c9d10e23659">
+<p align="center">
+<img width="445" alt="image" src="https://github.com/user-attachments/assets/910557bd-16e3-42e0-bf80-1276e8ef2b19">
+</p>
+
 
 ## 8 SSR Rebel Channel
 8 AC 2Amp Channel
