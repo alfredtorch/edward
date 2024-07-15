@@ -77,12 +77,15 @@ Features:
 1 Water Flow + Temperature Meter
 
 <p align="center">
-<img width="445" alt="image" src="https://github.com/user-attachments/assets/910557bd-16e3-42e0-bf80-1276e8ef2b19">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/910557bd-16e3-42e0-bf80-1276e8ef2b19">
 </p>
 
 
 ## 8 SSR Rebel Channel
 8 AC 2Amp Channel
+<p align="center">
+<img width="942" alt="image" src="https://github.com/user-attachments/assets/2f5ee228-50b8-4190-a45a-cc2ea2bf2bc4">
+</p>
 
 # Components
 |Model|Integrate|Circuit|Notes|
