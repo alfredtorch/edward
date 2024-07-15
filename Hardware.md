@@ -77,7 +77,7 @@ Features:
 1 Water Flow + Temperature Meter
 
 <p align="center">
-<img width="1070" alt="image" src="https://github.com/user-attachments/assets/0119ccfe-9abe-4433-8821-5196335cd68a">
+<img width="870" alt="image" src="https://github.com/user-attachments/assets/0119ccfe-9abe-4433-8821-5196335cd68a">
 </p>
 
 
