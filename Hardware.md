@@ -55,12 +55,42 @@ On Board Power Regulator
 
 This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
 Features:
-- ESP8266-based
-- Tasmota and Esphome Compatible
-- Open Source
-- On Board Power Regulator
-- Pluggable LED Drivers 
-- Water Cooling Control and Sense
+* ESP8266-based
+* Tasmota and Esphome Compatible
+* Open Source
+* On Board Power Regulator
+* Pluggable LED Drivers 
+* Water Cooling Control and Sense
+
+| PWM Label | Corresponding Label |
+|-----------|---------------------|
+|ADC121C021   | ADC for  Turbine Temperature NTC       |
+|DS1683S      | Event Counter for Water Flowmeter                 |
+|PCA9685      | PWM LED and Power Switch                  |
+|TMP1075DGKR5      | On Board Temperature Sensorh                  |
+|EMC2101      | Fan Controller & Tach Monitor    |
+|PCA9685      | PWM LED and Power Switch       |
+|LTC4311_SC70 | Improving I2C Stability (not populated)       |
+
+
+| PWM Label | Corresponding Label |
+|-----------|---------------------|
+| PWM0      | L0                  |
+| PWM1      | L1                  |
+| PWM2      | L2                  |
+| PWM3      | L3                  |
+| PWM4      | L4                  |
+| PWM5      | L5                  |
+| PWM6      | L6                  |
+| PWM7      | L7                  |
+| PWM8      | L8                  |
+| PWM9      | L9                  |
+| PWM10     | L10                 |
+| PWM11     | L11                 |
+| PWM12     | L12                 |
+| PWM13     | L13                 |
+| PWM14     | L14                 |
+| PWM15     | L15                 |
 
 ### On-Board
 |Feature|Notes|
