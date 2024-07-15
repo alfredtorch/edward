@@ -1,10 +1,11 @@
 # Electronics
 
 ## Green House - Terra
-With this device, you can easily interact with your agricultural setup and start controlling actuators to grow  
+This board is design to interact with your agricultural setup and start controlling actuators to help producing food.
+
 Features:
 ESP32-based
-Many configuration possible (Solder Jumper)
+Many PIN configuration possible (Solder Jumper)
 Tasmota and Esphome Compatible
 Open Source
 On Board Power Regulator
@@ -19,7 +20,7 @@ On Board Power Regulator
 | IO4  | RGB           | Solder Jumper |                            |
 | IO5  | PIO3          | 5V Level - Mosfet Output |               |
 | IO12 | Button Board  |               |                            |
-| IO13 | PIO4          | RGB Pixel     | 5V Level - Mosfet Output   |
+| IO13 | PIO4          | RGB Pixel     | 5V Level - Load Output   |
 | IO14 | Limit 1       | Servo 1 / Sonar Trigger | GPIO Selector Solder Jumper |
 | IO15 | Servo 2       | Stepper D     | GPIO Selector Solder Jumper |
 | IO16 | Fan PWM       |               |                            |
@@ -46,9 +47,10 @@ On Board Power Regulator
 ### Version
 | Model | Notes |
 | ---- | ---- | 
-| GreenHouse V1 | Issue Flow Meter, 4 External Power Control (AC-DC) |
-| GreenHouse V2 | Issue Flow Meter, 4 External Power Control (AC-DC) |
-| Fishtank | Issue Flow Meter, 4 On Board Mosfet |
+| GreenHouse V1 | Issue Flow Meter, 4 On-Board Load Power Switch (DC) |
+| GreenHouse V2 | Issue Flow Meter, 4 External Power Control (AC&DC), Sonar |
+| Fishtank | Integrate Library for Counter, 4 On Board Mosfet |
+
 ## Helios
 
 This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
