@@ -4,11 +4,13 @@
 This board is design to interact with your agricultural setup and start controlling actuators to help producing food.
 
 Features:
-ESP32-based
-Many PIN configuration possible (Solder Jumper)
-Tasmota and Esphome Compatible
-Open Source
-On Board Power Regulator
+* ESP32-based
+* Tasmota and Esphome Compatible
+* * Many PIN configuration possible (Solder Jumper)
+* Many Vcc Configuration possible (Solder Jumper) with On Board Power Regulator 
+* Open Source
+
+
 <p align="center">
 <img width="800" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/caf6568e-a54c-49b0-b28f-7a82f24329e7">
 </p>
@@ -44,11 +46,14 @@ On Board Power Regulator
 | 5V   | RGB, STEPPER, SERVO, MOSFET, VFAN | |                     |
 | 3V3  | SERVO, MCU    |               |                            |
 
+
+If an component (ex. Servo) is present in different voltage leveles, means that it can be solder jumped to a single source (ex. 5V).
+
 ### Version
 | Model | Notes |
 | ---- | ---- | 
-| GreenHouse V1 | Issue Flow Meter, 4 On-Board Load Power Switch (DC) |
-| GreenHouse V2 | Issue Flow Meter, 4 External Power Control (AC&DC), Sonar |
+| FishTankController V1 | Issue Flow Meter, 4 On-Board Load Power Switch (DC Avoiding 230V) |
+| GreenHouse V1 | Issue Flow Meter, 4 External Power Control (AC&DC), Sonar |
 | Fishtank | Integrate Library for Counter, 4 On Board Mosfet |
 
 ## Helios
