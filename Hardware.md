@@ -52,6 +52,8 @@ On Board Power Regulator
 | Fishtank | Integrate Library for Counter, 4 On Board Mosfet |
 
 ## Helios
+![84B7BFA5-E7B7-4799-95FC-74F6FF0A894F_1_105_c](https://github.com/user-attachments/assets/d610eeb9-df20-4d0e-8b37-351e8e14251b)
+
 
 This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
 Features:
@@ -62,35 +64,36 @@ Features:
 * Pluggable LED Drivers 
 * Water Cooling Control and Sense
 
-| PWM Label | Corresponding Label |
-|-----------|---------------------|
-|ADC121C021   | ADC for  Turbine Temperature NTC       |
-|DS1683S      | Event Counter for Water Flowmeter                 |
-|PCA9685      | PWM LED and Power Switch                  |
-|TMP1075DGKR5      | On Board Temperature Sensorh                  |
-|EMC2101      | Fan Controller & Tach Monitor    |
-|PCA9685      | PWM LED and Power Switch       |
-|LTC4311_SC70 | Improving I2C Stability (not populated)       |
+On-Board LEDs help 
+### Components
+| PWM Label | Corresponding Label | PWM Label | Corresponding Label |
+|-----------|---------------------|-----------|---------------------|
+|ADC121C021   | ADC for  Turbine Temperature NTC       | EMC2101      | Fan Controller & Tach Monitor    |
+|DS1683S      | Event Counter for Water Flowmeter                 | PCA9685      | PWM LED and Power Switch       |
+|PCA9685      | PWM LED and Power Switch                  | LTC4311_SC70 | Improving I2C Stability (not populated)       |
+|TMP1075DGKR5      | On Board Temperature Sensor                  | |
+| PT4115 | LED Driver | ESP-01 | MCU Exist in ESP8266 and ESP32 | |
 
 
-| PWM Label | Corresponding Label |
-|-----------|---------------------|
-| PWM0      | L0                  |
-| PWM1      | L1                  |
-| PWM2      | L2                  |
-| PWM3      | L3                  |
-| PWM4      | L4                  |
-| PWM5      | L5                  |
-| PWM6      | L6                  |
-| PWM7      | L7                  |
-| PWM8      | L8                  |
-| PWM9      | L9                  |
-| PWM10     | L10                 |
-| PWM11     | L11                 |
-| PWM12     | L12                 |
-| PWM13     | L13                 |
-| PWM14     | L14                 |
-| PWM15     | L15                 |
+I2C Device Address Selection are design with solder jumpers. 
+
+### Led Driver Module
+DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA. 
+<img width="406" alt="image" src="https://github.com/user-attachments/assets/0aacc0df-162c-4c88-94aa-e2633154ddb7">
+https://www.led-stuebchen.de/download/PT4115E.pdf
+
+### Pinout 
+| Pin | Controls | Pin | Controls |
+|-----------|---------------------|-----------|---------------------|
+| PWM0      | L0                  | PWM7      | L7                  |
+| PWM1      | L1                  | PWM8      | L8                  |
+| PWM2      | L2                  | PWM9      | L9                  |
+| PWM3      | L3                  | PWM10     | L10                 |
+| PWM4      | L4                  | PWM11     | L11                 |
+| PWM5      | L5                  | PWM12     | L12                 |
+| PWM6      | L6                  | PWM13     | L13                 |
+| PWM14     | L14                 | PWM15     | L15                 |
+
 
 ### On-Board
 |Feature|Notes|
