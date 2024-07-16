@@ -46,7 +46,7 @@ Improve the maintenance cost and efficiency with water cooled LED. The study is 
 
 # Product Development
 <img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
-
+** [Software Page](SoftwareSpecificationSheetM2.md)
 The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi1. The main challenges faced by the current system include:
 • not a standalone system (Raspberrypi + Station Controller)
 • no option for easy remote monitoring of the system (NAT, DNS)
@@ -63,6 +63,8 @@ More details about the electronics designed circuits, uaed materials etc.. are s
 
 You can find the current 
 ## Hardware
+
+## [Hardware Page ](Hardware.md)
 
 ## Use-Case
 Chicken Coop
