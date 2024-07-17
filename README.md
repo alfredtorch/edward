@@ -44,25 +44,21 @@ Improve the maintenance cost and efficiency with water cooled LED. The study is 
 3. Regulate Water pump and light intensity (based on state machine and scheduling)
 4. Measure (Light quality (Energy and Wavelengths, Consumption) over time
 
-# Product Development
+## Development Project 1 : Move away from Home Assistant
 <img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
-** [Software Page](SoftwareSpecificationSheetM2.md)
-The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi1. The main challenges faced by the current system include:
-• not a standalone system (Raspberrypi + Station Controller)
-• no option for easy remote monitoring of the system (NAT, DNS)
-• missing control options (regular self-calibration, failsafe mode)
-
-More details about the electronics designed circuits, uaed materials etc.. are shared on hardware.md
+* [Software Page](SoftwareSpecificationSheetM2.md)
+The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi. Which was great to fast prototype a proof of concept. However this result The main challenges faced by the current system are:
+* not a standalone system (Raspberrypi + Station Controller)
+* no option for easy remote monitoring of the system (NAT, DNS, Public IP)
+* missing control options (regular self-calibration, failsafe mode)
 
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
 </p>
 
-## Development Project 1 : Switch from HA Setup to independant Station MCU with remote connectivity
-
-You can find the current 
-## Files & Folders
-
+# Files & Folders
+The project is currently mainly organised in this respository.
+All shared by Licence... 
 ## [Hardware Page](Hardware.md)
 ## [Hardware PCB Folder](/Hardware/)
 ## [Software Page](/Software/)
