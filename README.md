@@ -64,7 +64,7 @@ All shared by Licence...
 ## [Hardware Page](Hardware.md)
 ## [Hardware PCB Folder](/Hardware/)
 ## [Components](Components.md)
-## [Software Page](/Software/)
+## [Software Folder](/Software/)
 ## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
 
 
