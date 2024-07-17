@@ -46,12 +46,12 @@ Features:
 | 5V   | RGB, STEPPER, SERVO, MOSFET, VFAN | |                     |
 | 3V3  | SERVO, MCU    |               |                            |
 
-
 If an component (ex. Servo) is present in different voltage leveles, means that it can be solder jumped to a single source (ex. 5V).
 
 ### Version
+
 | Model | Notes |
-| ---- | ---- | 
+| ---- | ---- |
 | FishTankController V1 | Issue Flow Meter, 4 On-Board Load Power Switch (DC Avoiding 230V) |
 | GreenHouse V1 | Issue Flow Meter, 4 External Power Control (AC&DC), Sonar |
 | Fishtank | Integrate Library for Counter, 4 On Board Mosfet |
@@ -123,11 +123,23 @@ DS1682_Arduino.ino
 
 
 ## 8 SSR Rebel Channel
-8 AC 2Amp Channel
+
+This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
+
+Features:
+* ESP32-based
+* Phase dimming of AC Loads (0-100%)
+* Tasmota and Esphome Compatible
+* On Board ACDC Power Regulator
+* AC Current Monitor
+* GUI with Display and Encoder
+
 <p align="center">
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
 </p>
 
+
+### Pinout
 | Pin | Controls | Pin | Controls | Pin | Controls |
 |-----------|---------------------|-----------|---------------------| -----------|---------------------|
 |  IO26     | SSR1                  | IO39      | Analog            | IO22       | SCL                 |
@@ -139,34 +151,14 @@ DS1682_Arduino.ino
 | IO27      | SSR7                  | PWM13     | BTN               |            |                     |
 | IO25      | SSR8                  |           |                   |            |                     |
 
-SSR1:IO26
-SSR2:IO18
-SSR3:IO19
-SSR4:IO23
-SSR5:IO17
-SSR6:IO16
-SSR7:IO27
-SSR8:IO25
-
-Analog:IO39
-InfraRed:IO35
-ZeroCrossing:IO33
-CurrentSignal:IO34
-Temp:IO02
-RGB:IO32
-BTN:IO15
-SCL:IO22
-SDA:IO25
-EncoderA:IO13
-EncoderB:IO36
-EncoderS:IO4
+Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank).
 
 # Components
 One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
 A detailed overview is provided. These integrations can result direct on-board or request some addiditionnal PCB designs (available in the Hardware Repository)[/Hardware/].
 
 <p align="center">
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/6f712362-dd98-4ace-b2c5-a8c5ec8c6b0a">
+<img width="826" alt="image" src="https://github.com/user-attachments/assets/8d128d6b-a7c9-4695-b9d1-5b795301e31d">
 </p>
 
 |Model|Integrate|Circuit|Notes|
