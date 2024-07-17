@@ -77,24 +77,53 @@ On-Board LEDs help
 |ADC121C021   | ADC for  Turbine Temperature NTC       | EMC2101      | Fan Controller & Tach Monitor    |
 |DS1683S      | Event Counter for Water Flowmeter                 | PCA9685      | PWM LED and Power Switch       |
 |PCA9685      | PWM LED and Power Switch                  | LTC4311_SC70 | Improving I2C Stability (not populated)       |
-|TMP1075DGKR5 | On Board Temperature Sensor                  | |
+|TMP1075DGKR5 | On Board Temperature Sensor                  | Smart Switch  | Type ... Load Ratings |
 |PT4115       | LED Driver        |  ESP-01 | MCU Exist in ESP8266 and ESP32 | |
 
 
 I2C Device Address Selection are design with solder jumpers. 
 
-
 ### Pinout 
-| Pin   | Controls | Pin   | Controls | Pin   | Controls |
-|-------|----------|-------|----------|-------|----------|
-| PWM0  | L0       | PWM6  | L6       | PWM11 | L11      |
-| PWM1  | L1       | PWM7  | L7       | PWM12 | L12      |
-| PWM2  | L2       | PWM8  | L8       | PWM13 | L13      |
-| PWM3  | L3       | PWM9  | L9       | PWM14 | L14      |
-| PWM4  | L4       | PWM10 | L10      | PWM15 | L15      |
-| PWM5  | L5       |       |          |       |          |
+| Pin   | Controls | Pin   | Controls | Pin   | Controls |Pin   | Controls |
+|-------|----------|-------|----------|-------|----------|-------|----------|
+| PWM0  | M4 Load  | PWM6  | LED 6    | PWM12 | Servo      | IO0 | SDA from MCU |
+| PWM1  | M3 Load  | PWM7  | LED 5    | PWM13 | Error LED  | IO2 | SCL from MCU
+| PWM2  | M2 Load  | PWM8  | LED 1    | PWM14 | Status LED | RST | Reset Button MCU |
+| PWM3  | M1 Load  | PWM9  | LED 2    | PWM15 | Fan PWM | |
+| PWM4  | LED 11   | PWM10 | LED 3    | WTemp LED | ADC121 Alarm     |
+| PWM5  | LED 7    | PWM11 | LED 4    | WTach LED | DS16883S+ Alert  |
 
+If an EMC2101 is mounted J15 should be not connected, in order to isolate PWM15 for interferring.
+
+L1-8
+L2-9
+L3-10
+L4-11
+L5-7
+L6-6
+L7-5
+L8-4
+
+M1-3
+M2-2
+M3-1
+M4-0
+
+Servo-12
+Fan (J)-15
+
+ 14
+Error-13
+
+ : 
+WTach LED : 
+Temp LED : TMP1075 OS
+
+ 
+
+### ToDo
 DS1682_Arduino.ino
+
 
 ### On-Board
 |Feature|Notes|
