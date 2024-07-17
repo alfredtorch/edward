@@ -29,10 +29,10 @@ The Sustainable Food Cycle and Optimization Biological Cycle are central to Edwa
 For individuals, Edward offers a novel way to connect with nature and their community. Members assume shared responsibility for their plants and fish, gaining knowledge and forming new connections, both digitally and in person. This hands-on experience not only yields healthy food but also underlines a Return on Research (RoR) approach, valuing the knowledge gained from community-led research and innovation.
 
 Key Features
-- Citizen-Operated Stations: Gather observations for new biological scenarios like light conditions or tidal cycles.
-- Mobile App Support: Easy sharing of observations with scientists, encouraging dynamic information exchange.
-- Participative and Gamified Approach: Encourages dialogue, sharing through text and images, and collective data contribution.
-- AI-Driven Insights: Data from multiple stations feed into AI models for valuable insights into small-scale and industrial agricultural practices, such as pisciculture.
+* Citizen-Operated Stations: Gather observations for new biological scenarios like light conditions or tidal cycles.
+* Mobile App Support: Easy sharing of observations with scientists, encouraging dynamic information exchange.
+* Participative and Gamified Approach: Encourages dialogue, sharing through text and images, and collective data contribution.
+* AI-Driven Insights: Data from multiple stations feed into AI models for valuable insights into small-scale and industrial agricultural practices, such as pisciculture.
 
 ## Research Project 1 : Water Cooled LEDs
 <img width="1120" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/308338e6-abe0-4e30-807d-cb491b769f31">
@@ -46,11 +46,13 @@ Improve the maintenance cost and efficiency with water cooled LED. The study is 
 
 ## Development Project 1 : Move away from Home Assistant
 <img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
-* [Software Page](SoftwareSpecificationSheetM2.md)
+
 The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi. Which was great to fast prototype a proof of concept. However this result The main challenges faced by the current system are:
 * not a standalone system (Raspberrypi + Station Controller)
 * no option for easy remote monitoring of the system (NAT, DNS, Public IP)
 * missing control options (regular self-calibration, failsafe mode)
+
+Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and to develop Edward.
 
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
@@ -61,6 +63,7 @@ The project is currently mainly organised in this respository.
 All shared by Licence... 
 ## [Hardware Page](Hardware.md)
 ## [Hardware PCB Folder](/Hardware/)
+## [Components](Components.md)
 ## [Software Page](/Software/)
 ## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
 
