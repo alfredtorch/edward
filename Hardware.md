@@ -82,10 +82,6 @@ On-Board LEDs help
 
 I2C Device Address Selection are design with solder jumpers. 
 
-### Led Driver Module
-DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA. 
-<img width="406" alt="image" src="https://github.com/user-attachments/assets/0aacc0df-162c-4c88-94aa-e2633154ddb7">
-https://www.led-stuebchen.de/download/PT4115E.pdf
 
 ### Pinout 
 | Pin | Controls | Pin | Controls |
@@ -152,7 +148,9 @@ Features:
 | IO25      | SSR8                  |           |                   |            |                     |
 
 Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank).
-
+<p align="center">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
+</p>
 # Components
 One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
 A detailed overview is provided. These integrations can result direct on-board or request some addiditionnal PCB designs (available in the Hardware Repository)[/Hardware/].
