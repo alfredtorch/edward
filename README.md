@@ -59,15 +59,13 @@ More details about the electronics designed circuits, uaed materials etc.. are s
 </p>
 
 ## Development Project 1 : Switch from HA Setup to independant Station MCU with remote connectivity
-<img width="1216" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/0fab5a13-c6f2-44c3-aea5-96a105847a0e">
 
 You can find the current 
-## Hardware
+## Files & Folders
 
-## [Hardware Page ](Hardware.md)
+## [Hardware Page](Hardware.md)
+## [Hardware PCB Folder](Hardware.md)
+## [Software Page](Software.md)
+## [Software Devlopment Specification Sheete](Software.md)
 
-## Use-Case
-Chicken Coop
-Irregation Controller
-Aqua-Hydrophonics System
-Green House (Micro-Macro)
+
