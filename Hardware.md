@@ -119,13 +119,16 @@ DS1682_Arduino.ino
 
 ## 8 SSR Rebel Channel
 
-This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
+This design allows you to control and dimm your AC appliances. For a growtank this can be light output and for an irragation control valve 
+Applying phase dimming to an unsupported appliance may destroy it. Carefull checking and handling is required while using the device.
+
+all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
 
 Features:
 * ESP32-based
-* Phase dimming of AC Loads (0-100%)
 * Tasmota and Esphome Compatible
-* On Board ACDC Power Regulator
+* 8 Channel Phase dimming of AC Loads (0-100%) with dedicated Schmitt-Trigger for stable operations
+* On Board ACDC Power Supply
 * AC Current Monitor
 * GUI with Display and Encoder
 
@@ -156,8 +159,9 @@ One design goal is to easy intergrate new components without needing to go back 
 A detailed overview is provided. These integrations can result direct on-board or request some addiditionnal PCB designs [available in the Hardware Repository](/Hardware/).
 
 <p align="center">
-<img width="826" alt="image" src="https://github.com/user-attachments/assets/8d128d6b-a7c9-4695-b9d1-5b795301e31d">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/2869c10f-52cb-4eb7-b3a5-28e97be0c340">
 </p>
+
 
 |Model|Integrate|Circuit|Notes|
 |----|----|---|---|
