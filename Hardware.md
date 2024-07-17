@@ -125,8 +125,41 @@ DS1682_Arduino.ino
 ## 8 SSR Rebel Channel
 8 AC 2Amp Channel
 <p align="center">
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/2f5ee228-50b8-4190-a45a-cc2ea2bf2bc4">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
 </p>
+
+| Pin | Controls | Pin | Controls | Pin | Controls |
+|-----------|---------------------|-----------|---------------------| -----------|---------------------|
+|  IO26     | SSR1                  | IO39      | Analog            | IO22       | SCL                 |
+| IO18      | SSR2                  | IO35      | InfraRed          | IO25       | SDA                 |
+| IO19      | SSR3                  | PWM9      | ZeroCrossing      | IO13       | EncoderA            |
+| IO23      | SSR4                  | IO33      | CurrentSignal     | IO36       | EncoderB            |
+| IO17      | SSR5                  | IO02      | Temp              | IO4        | EncoderS            |
+| IO16      | SSR6                  | IO32      | RGB               |            |                     |
+| IO27      | SSR7                  | PWM13     | BTN               |            |                     |
+| IO25      | SSR8                  |           |                   |            |                     |
+
+SSR1:IO26
+SSR2:IO18
+SSR3:IO19
+SSR4:IO23
+SSR5:IO17
+SSR6:IO16
+SSR7:IO27
+SSR8:IO25
+
+Analog:IO39
+InfraRed:IO35
+ZeroCrossing:IO33
+CurrentSignal:IO34
+Temp:IO02
+RGB:IO32
+BTN:IO15
+SCL:IO22
+SDA:IO25
+EncoderA:IO13
+EncoderB:IO36
+EncoderS:IO4
 
 # Components
 One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
