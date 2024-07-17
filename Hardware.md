@@ -56,6 +56,10 @@ If an component (ex. Servo) is present in different voltage leveles, means that 
 | GreenHouse V1 | Issue Flow Meter, 4 External Power Control (AC&DC), Sonar |
 | Fishtank | Integrate Library for Counter, 4 On Board Mosfet |
 
+<p align="center">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/e97fcc15-910b-4755-9351-418b5c4119d3">
+</p>
+
 ## Helios
 This design allows you to tweak all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
 Features:
@@ -77,8 +81,8 @@ On-Board LEDs help
 |ADC121C021   | ADC for  Turbine Temperature NTC       | EMC2101      | Fan Controller & Tach Monitor    |
 |DS1683S      | Event Counter for Water Flowmeter                 | PCA9685      | PWM LED and Power Switch       |
 |PCA9685      | PWM LED and Power Switch                  | LTC4311_SC70 | Improving I2C Stability (not populated)       |
-|TMP1075DGKR5 | On Board Temperature Sensor                  | Smart Switch  | Type ... Load Ratings |
-|PT4115       | LED Driver        |  ESP-01 | MCU Exist in ESP8266 and ESP32 | |
+|TMP1075DGKR5 | On Board Temperature Sensor                  | Low Side Switch  | Smart Switch 4 Channel like VNN7NV04PTR-E max 30v at 6Amp |
+|PT4115       | LED Driver IC Module       |  ESP-01 | MCU Exist in ESP8266 and ESP32 | |
 
 
 I2C Device Address Selection are design with solder jumpers. 
@@ -94,32 +98,6 @@ I2C Device Address Selection are design with solder jumpers.
 | PWM5  | LED 7    | PWM11 | LED 4    | WTach LED | DS16883S+ Alert  |
 
 If an EMC2101 is mounted J15 should be not connected, in order to isolate PWM15 for interferring.
-
-L1-8
-L2-9
-L3-10
-L4-11
-L5-7
-L6-6
-L7-5
-L8-4
-
-M1-3
-M2-2
-M3-1
-M4-0
-
-Servo-12
-Fan (J)-15
-
- 14
-Error-13
-
- : 
-WTach LED : 
-Temp LED : TMP1075 OS
-
- 
 
 ### ToDo
 DS1682_Arduino.ino
@@ -142,8 +120,10 @@ DS1682_Arduino.ino
 1 Water Flow + Temperature Meter
 
 <p align="center">
-<img width="870" alt="image" src="https://github.com/user-attachments/assets/d610eeb9-df20-4d0e-8b37-351e8e14251b">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/58766274-3675-435b-a5ba-21243c883404">
 </p>
+
+
 
 
 ## 8 SSR Rebel Channel
