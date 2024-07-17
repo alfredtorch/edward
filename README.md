@@ -64,8 +64,8 @@ You can find the current
 ## Files & Folders
 
 ## [Hardware Page](Hardware.md)
-## [Hardware PCB Folder](Hardware.md)
-## [Software Page](Software.md)
-## [Software Devlopment Specification Sheete](Software.md)
+## [Hardware PCB Folder](/Hardware/)
+## [Software Page](/Software/)
+## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
 
 
