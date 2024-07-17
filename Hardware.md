@@ -129,6 +129,13 @@ DS1682_Arduino.ino
 </p>
 
 # Components
+One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
+A detailed overview is provided. These integrations can result direct on-board or request some addiditionnal PCB designs (available in the Hardware Repository)[/Hardware/].
+
+<p align="center">
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/6f712362-dd98-4ace-b2c5-a8c5ec8c6b0a">
+</p>
+
 |Model|Integrate|Circuit|Notes|
 |----|----|---|---|
 |DC Load|Motors, pumps|Helio, GreenHouse v1 on-board - v2 external|Blablabla|
