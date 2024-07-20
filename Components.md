@@ -1,9 +1,17 @@
 # Sensors
 
-## Water Turibne
+## Water Flow Meter 
+<p align="center">
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/4e351981-9f5a-4c53-b4ae-eac67a5f55af">
+</p>
+
 
 ## Level and Limit Switch
+<p align="center">
+<img width="1040" alt="image" src="https://github.com/user-attachments/assets/a98c780e-8288-4141-8b61-7b1e73de393e">
+</p>
 
+ 
 ## Temperature
 
 ## Airquality
