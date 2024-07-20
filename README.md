@@ -61,10 +61,10 @@ Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md)
 # Files & Folders
 The project is currently mainly organised in this respository.
 All shared by Licence... 
-## [Hardware Page](Hardware.md)
-## [Hardware PCB Folder](/Hardware/)
+## [Hardware](Hardware.md)
+## [Hardware PCB Repo.](/Hardware/)
 ## [Components](Components.md)
-## [Software Folder](/Software/)
+## [Software Repo](/Software/)
 ## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
 
 
