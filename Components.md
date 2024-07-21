@@ -6,13 +6,30 @@
 </p>
 
 
+
+| Strategy | Notes | Board Compatbility | ToDo |
+|---|---|---|---|
+|PCTN Counter| ESP32 internal Counter ESPHOME ✅ | GreenHouse, Fishtank, SSR8 : Level Shifter Missing | Design Translator PCB & Formula 
+|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Component Software
+
+
 ## Level and Limit Switch
 <p align="center">
 <img width="1040" alt="image" src="https://github.com/user-attachments/assets/a98c780e-8288-4141-8b61-7b1e73de393e">
 </p>
 
- 
+| Strategy | Notes | Board Compatbility | ToDo |
+|---|---|---|---|
+|Limit Switch| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank : L1 - L2 | |
+|Sonar| Measure Distance to Water Surface   | GreenHouse : Not yet tested | |
+|Optical Water | Can not be fully submerged (Tank fixation) | Greenhouse & Fishtank | Fully Tested |
+|Fuel Gauge | Solid Design - 5 stage 0 - 190Ohm | GreenHouse & Fishtank : Thermistor - SSR8 on Analog | Fully Tested |
+
 ## Temperature
+| Strategy | Notes | Board Compatbility | ToDo |
+|---|---|---|---|
+|ds18b20| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank | |
+
 
 ## Airquality
 
