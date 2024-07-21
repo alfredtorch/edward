@@ -167,7 +167,9 @@ Features:
 
 Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank).
 <p align="center">
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
+<br>
+A working SSR 8 Rebel Controller controlling 6 LED Channel, 1 Waterpump and 1 Fan.
 </p>
 
 ## ToDo
