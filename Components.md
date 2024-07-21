@@ -23,7 +23,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |---|---|---|---|---|
 |Limit Switch| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank : L1 - L2 | Fully Tested ✅| 
 |Sonar| Measure Distance to Water Surface | GreenHouse : Not yet tested | |
-|Optical Water | Can not be fully submerged (Tank fixation) | Greenhouse & Fishtank | Fully Tested ✅|
+|Optical Water | Can not be fully submerged (Tank mounted) | Greenhouse & Fishtank | Fully Tested ✅|
 |Fuel Gauge | Solid Design - 5 stage 0 - 190Ohm | GreenHouse & Fishtank : Thermistor - SSR8 on Analog | Fully Tested ✅|
 
 ## Temperature
@@ -38,7 +38,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 
 ## Air Quality
 <p align="center">
-<img width="327" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
+<img width="227" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
 </p>
 
 | Device | Notes | Board Compatbility | ToDo | Source |
@@ -51,10 +51,11 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 <img width="493" alt="image" src="https://github.com/user-attachments/assets/1608a392-8e45-4024-8fd0-94fa0c324538">
 </p>
 
-| Strategy | Notes | Board Compatbility | ToDo | Source |
-|---|---|---|---|
-|Relay  | 5V 4 Channel  | Greenhouse with PCB  | Not yet Tested|
-|Solid State Relay | Greenhouse with SSR - PCB  | Fully Tested ✅|
+| Device | Notes | Board Compatbility | ToDo | Source |
+|---|---|---|---|---|
+|Relay  | 5V 4 Channel  | Greenhouse with Relay - PCB  | Not yet Tested| [Aliexpress](https://s.click.aliexpress.com/e/_DFJCp8L)
+|Solid State Relay | Greenhouse with SSR - PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DkCJPYb)
+|Dimmable Solid State Relay | 8x 2Amp main SSR | SSR Rebel with Zero Crossing Circuit  | Fully Tested ✅| Tindie Store soon
 
 ## DC Switching
 <p align="center">
@@ -63,36 +64,41 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 
 | Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|
-|Blued Mosfet  | COTS Module  5-36V at 15Amp  | Greenhouse with GSV Mosfet Rail PCB  | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Black Mosfet | COTS Module different options : 30V-100V min 30Amp|  Greenhouse with SVG Mosfet Rail PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_Dl0jIYB)
+|Blued Mosfet  | COTS Module  5-36V at 15Amp  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Black Mosfet | COTS Module different options : 30V-100V min 30Amp|  Greenhouse with SVG Mosfet Rail PCB PIO1-4 | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_Dl0jIYB)
 
 ## Waterpumps
 
 ## Servo
 
 ## Stepper
-
-28BYJ
+| Device | Notes | Board Compatbility | ToDo | Source |
+|---|---|---|---|---|
+|28BYJ48  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
 
 ## Light
-| Strategy | Notes | Board Compatbility | ToDo | Source 
-|---|---|---|---|---|
-|Relay 4 Channel | COTS Module  | Helios | Fully  Tested ✅|| [Aliexpress](https://s.click.aliexpress.com/e/_DmwcsK7)
-|Solid State Relay | COTS Module |  Greenhouse with SSR - PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DmwcsK7)
-
-### HLed Driver Module
-
-DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA. 
 <p align="center">
-<img width="406" alt="image" src="https://github.com/user-attachments/assets/0aacc0df-162c-4c88-94aa-e2633154ddb7">
+<img width="923" alt="image" src="https://github.com/user-attachments/assets/d7b7b36d-e4ce-476a-b356-95fc76a2ec44">
 </p>
-https://www.led-stuebchen.de/download/PT4115E.pdf
+| Device | Notes | Board Compatbility | ToDo | Source 
+|---|---|---|---|---|
+| Aquarium 8 Channels Module | COTS Module | Helios | Fully  Tested ✅|| [Aliexpress](https://s.click.aliexpress.com/e/_DFJCp8L)
+| DC Led Driver Module | COTS Module )  | Helios : 1 ex. PWM Green House & Fishtank : Servo 1 - 2 | Fully  Tested ✅|| [Aliexpress](https://s.click.aliexpress.com/e/_DD5UYUn)
+| LED 230AC | COTS Module (30-50 Watt) Different Wavelengts |  GreenHouse with SSR (On Off) - SSR Rebel (dimming)  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DkCJPYb)
+
+### Aquarium Module 8 Channel
+<p align="center">
+ <img width="527" alt="image" src="https://github.com/user-attachments/assets/4f1ba150-cdbf-4a0e-97e0-a1164266668d">
+</p>
+DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA.
+[Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
+[Aliexpress 1-3Watt](https://s.click.aliexpress.com/e/_DkGRYXz)
 
 ### LED Module Channel Specifications (Optional)
 <p align="center">
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/e23efa59-5471-4533-8dc1-82ef9a806d20">
 </p>
-
+[Aliexpress](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
 
 | Channel   | Color    | Wavelength (nm) | Current (mA) | Voltage (V) | Power (W) | Quantity |
 |-----------|----------|-----------------|--------------|-------------|-----------|----------|
@@ -104,13 +110,10 @@ https://www.led-stuebchen.de/download/PT4115E.pdf
 | Violet    | Violet   | 410-430         | 700          | 12-13       | 8.75      | 3        |
 | UV        | UV       | 390-410         | 700          | 6.4-6.6     | 4.55      | 2        |
 
+__Theoretical Power Figures__
 **Total Power Consumption:** 48.3W  
 **Required Voltage for LED Driver:** 15V (safe margin)  
 **Typical Step-Down LED Driver Input Voltage:** 24V
-
-https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.detail.0.0.1066oEUzoEUzVt&mp=1&gatewayAdapt=glo2deu
-
-### External LED Driver Module
  
 ### Addressable LED Strip
 
