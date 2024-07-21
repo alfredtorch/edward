@@ -1,3 +1,5 @@
+Please if you need to shop for parts, it would be great that you use the supply links below. As they are affilated, you're supporting directly the development of Edward! Thank you!
+
 # Sensors
 
 ## Water Flow Meter 
@@ -6,20 +8,21 @@
 </p>
 
 
-| Strategy | Notes | Board Compatbility | ToDo |
-|---|---|---|---|
-|PCTN Counter| ESP32 internal Counter ESPHOME ✅ | GreenHouse, Fishtank, SSR8 : Level Shifter Missing | Design Translator PCB & Formula 
-|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Component Software
+
+Device| Integration | Notes | Board Compatbility | ToDo | Source |
+|---|---|---|---|---|---|
+Flow Meter|PCTN Counter| ESP32 internal Counter ESPHOME ✅ | GreenHouse, Fishtank, SSR8 : Level Shifter Missing | Design Translator PCB & Formula | [Aliexpress](https://s.click.aliexpress.com/e/_DBCUJ6n)
+Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Component Software | [Aliexpress](https://s.click.aliexpress.com/e/_DBCUJ6n)
 
 ## Level and Limit Switch
 <p align="center">
 <img width="1040" alt="image" src="https://github.com/user-attachments/assets/840bd48d-2a28-47b8-aefa-60d3a1b0b904">
 </p>
 
-| Strategy | Notes | Board Compatbility | ToDo |
-|---|---|---|---|
-|Limit Switch| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank : L1 - L2 | Fully Tested ✅|
-|Sonar| Measure Distance to Water Surface   | GreenHouse : Not yet tested | |
+| Device | Notes | Board Compatbility | ToDo | Source |
+|---|---|---|---|---|
+|Limit Switch| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank : L1 - L2 | Fully Tested ✅| 
+|Sonar| Measure Distance to Water Surface | GreenHouse : Not yet tested | |
 |Optical Water | Can not be fully submerged (Tank fixation) | Greenhouse & Fishtank | Fully Tested ✅|
 |Fuel Gauge | Solid Design - 5 stage 0 - 190Ohm | GreenHouse & Fishtank : Thermistor - SSR8 on Analog | Fully Tested ✅|
 
@@ -28,13 +31,13 @@
 <img width="655" alt="image" src="https://github.com/user-attachments/assets/8edb3dea-d23d-4769-af50-b4d19750e18d">
 </p>
 
-| Strategy | Notes | Board Compatbility | ToDo |
-|---|---|---|---|
+| Device | Notes | Board Compatbility | ToDo | Source |
+|---|---|---|---|---|
 |ds18b20| Digital One-Wire Temperature Sesnor | Greenhouse & FishTank & SSR | Fully Tested ✅ - Check Multiple Device|
 |Thermistor| (10K)  | Greenhouse & FishTank & SSR8 &  | Not yet tested |
 
 ## Airquality
-| Strategy | Notes | Board Compatbility | ToDo |
+| Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|
 |ds18b20| Digital One-Wire Temperature Sesnor | Greenhouse & FishTank & SSR | Fully Tested ✅ - Check Multiple Device|
 
@@ -44,7 +47,7 @@
 <img width="493" alt="image" src="https://github.com/user-attachments/assets/1608a392-8e45-4024-8fd0-94fa0c324538">
 </p>
 
-| Strategy | Notes | Board Compatbility | ToDo |
+| Strategy | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|
 |Relay  | 5V 4 Channel  | Greenhouse with PCB  | Not yet Tested|
 |Solid State Relay | Greenhouse with SSR - PCB  | Fully Tested ✅|
@@ -54,10 +57,10 @@
 <img width="718" alt="image" src="https://github.com/user-attachments/assets/1e7d1dc8-28c3-47a2-bd6a-35c9a6d6608e">
 </p>
 
-| Strategy | Notes | Board Compatbility | ToDo | Source |
+| Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|
-|Relay  | 5V 4 Channel  | Greenhouse with PCB  | Not yet Tested | http |
-|Solid State Relay | Greenhouse with SSR - PCB  | Fully Tested ✅ | http |
+|Blued Mosfet  | COTS Module  5-36V at 15Amp  | Greenhouse with GSV Mosfet Rail PCB  | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Black Mosfet | COTS Module different options : 30V-100V min 30Amp|  Greenhouse with SVG Mosfet Rail PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_Dl0jIYB)
 
 ## Waterpumps
 
@@ -68,14 +71,20 @@
 28BYJ
 
 ## Light
+| Strategy | Notes | Board Compatbility | ToDo | Source 
+|---|---|---|---|---|
+|Relay 4 Channel | COTS Module  | Helios | Fully  Tested ✅|| [Aliexpress](https://s.click.aliexpress.com/e/_DmwcsK7)
+|Solid State Relay | COTS Module |  Greenhouse with SSR - PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DmwcsK7)
 
-### Led Driver Module
+### HLed Driver Module
+
 DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA. 
+<p align="center">
 <img width="406" alt="image" src="https://github.com/user-attachments/assets/0aacc0df-162c-4c88-94aa-e2633154ddb7">
+</p>
 https://www.led-stuebchen.de/download/PT4115E.pdf
 
 ### LED Module Channel Specifications (Optional)
-
 <p align="center">
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/e23efa59-5471-4533-8dc1-82ef9a806d20">
 </p>
@@ -86,7 +95,6 @@ https://www.led-stuebchen.de/download/PT4115E.pdf
 | Red       | Red      | 650-670         | 700          | 4.0-4.4     | 2.94      | 2        |
 | Green     | Green    | 520-530         | 700          | 6.0-6.4     | 4.34      | 2        |
 | Deep Blue | Deep Blue| 450-470         | 700          | 12-13       | 8.75      | 4        |
-| Blue      | Blue     | 450-470         | 700          | 12-13       | 8.75      | 4        |
 | White     | White    | 6000-8000K      | 700          | 12-13       | 8.75      | 4        |
 | Yellow    | Yellow   | 585-595         | 700          | 2.0-2.2     | 1.47      | 1        |
 | Violet    | Violet   | 410-430         | 700          | 12-13       | 8.75      | 3        |
@@ -101,4 +109,7 @@ https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.detail.0.0.1066oE
 ### External LED Driver Module
  
 ### Addressable LED Strip
+
+
+
 
