@@ -189,11 +189,3 @@ A detailed overview is provided. These integrations can result direct on-board o
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/2869c10f-52cb-4eb7-b3a5-28e97be0c340">
 </p>
 
-
-|Model|Integrate|Circuit|Notes|
-|----|----|---|---|
-|DC Load|Motors, pumps|Helio, GreenHouse v1 on-board - v2 external|Blablabla|
-|AC Load|Motors, Lights, ...|SSR Rebel Fighter|Blabla|
-
-
-
