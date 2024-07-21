@@ -12,6 +12,9 @@ Key Features
 <img width="600" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/b09d52ce-bccf-47e4-86c5-7ff1bcfb4936">
 </p>
 
+> ## Help Needed
+> Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
+
 # Growing Lab & Sharing Knowledge
 Edward fosters continuous improvement through community involvement at multiple levels. Individuals manage local stations, benefit from fresh food, and participate in testing new biological scenarios. This approach enriches community knowledge and enhances the numerical model.
 
@@ -52,9 +55,6 @@ The current prototype system is powered by Home Assistant with ESPHome running o
 - It is not a standalone system (requires both Raspberry Pi and Station Controller).
 - There is no option for easy remote monitoring of the system (NAT, DNS, Public IP).
 - Missing control options (regular self-calibration, failsafe mode).
-
-> ## Help Needed
-> Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
 
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
