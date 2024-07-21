@@ -1,5 +1,3 @@
-# Electronics
-
 # Green House - Terra
 The Green House - Terra board is designed to seamlessly integrate with your agricultural setup, enabling precise control over various actuators to enhance food production. This versatile board supports multiple devices and actuators, such as pumps and lights, making it ideal for diverse applications. While the fishtank version is highly accessible and beginner-friendly, the Green House - Terra platform offers unmatched versatility, capable of switching heavy loads running on mains power.
 
@@ -66,7 +64,7 @@ _Note: If a component (e.g., a Servo) operates at different voltage levels, it c
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/43bde4f0-9ec0-491e-89ca-31dcf4b81e5b">
 </p>
 
-### ToDo
+## ToDo
 - [x] Use as Aquaponics Controll with ESPHOME (both fuelgauge and optical water)
 - [ ] Test all configurations 
 
@@ -125,26 +123,20 @@ _Note: I2C device addresses are selectable with solder jumpers._
 
 _Note: If an EMC2101 is mounted, J15 should not be connected to isolate PWM15 and prevent interference._
 
-### ToDo
+## ToDo
 - [X] 9 Channel, On-Board  + Alu Heat Sink Temperature, controlled by ESPHOM
 - [ ] EMC2101 test
 - [ ] Integrate DS1683S in ESPHOME
 - [ ] Try DS1682 for Event Counter
 - [ ] Write an advanced code (GUI - Scheduler for it)
 
-
-8 Channel LED Driver
-2 PWM Output
-1 Water Flow + Temperature Meter
-
 <p align="center">
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/58766274-3675-435b-a5ba-21243c883404">
+<br>
+A working Helios setup emitting around 150 Watt of light output, water and air cooled. Mounted on a eurobox.
 </p>
 
-
-
-
-## 8 SSR Rebel Channel
+# 8 SSR Rebel Channel
 
 This design allows you to control and dimm your AC appliances. For a growtank this can be light output and for an irragation control valve 
 Applying phase dimming to an unsupported appliance may destroy it. Carefull checking and handling is required while using the device.
@@ -163,8 +155,7 @@ Features:
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
 </p>
 
-
-### Pinout
+## Pinout
 | Pin | Controls | Pin | Controls | Pin | Controls |
 |-----------|---------------------|-----------|---------------------| -----------|---------------------|
 |  IO26     | SSR1                  | IO39      | Analog            | IO22       | SCL                 |
@@ -180,6 +171,11 @@ Zero Crossing = can be used as main detector (binary state) JP2 connected or zer
 <p align="center">
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
 </p>
+
+## ToDo
+- [X] 8 Channel AC Phase Dimmed controlled by ESPHOME
+- [ ] Current Clamp Monitor Not yet tested
+- [ ] GUI components not yet tested
 
 # [Components](Components.md)
 One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
