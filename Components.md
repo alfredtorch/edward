@@ -37,7 +37,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 
 ## Ambient & Air Quality
 <p align="center">
-<img width="227" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
+<img width="157" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
 </p>
 
 | Device | Notes | Board Compatbility | ToDo | Source |
@@ -47,7 +47,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 # Load Switching
 ## AC Switching
 <p align="center">
-<img width="493" alt="image" src="https://github.com/user-attachments/assets/1608a392-8e45-4024-8fd0-94fa0c324538">
+<img width="463" alt="image" src="https://github.com/user-attachments/assets/1608a392-8e45-4024-8fd0-94fa0c324538">
 </p>
 
 | Device | Notes | Board Compatbility | ToDo | Source |
@@ -58,7 +58,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 
 ## DC Switching
 <p align="center">
-<img width="718" alt="image" src="https://github.com/user-attachments/assets/1e7d1dc8-28c3-47a2-bd6a-35c9a6d6608e">
+<img width="618" alt="image" src="https://github.com/user-attachments/assets/1e7d1dc8-28c3-47a2-bd6a-35c9a6d6608e">
 </p>
 
 | Device | Notes | Board Compatbility | ToDo | Source |
@@ -99,9 +99,9 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 </p>
 DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA.
 
-*[Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
-*[Aliexpress 1-3Watt Driver ](https://s.click.aliexpress.com/e/_DkGRYXz)
-*[Aliexpress LED Module](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
+* [Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
+* [Aliexpress 1-3Watt Driver ](https://s.click.aliexpress.com/e/_DkGRYXz)
+* [Aliexpress LED Module](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
 
 | Channel   | Color    | Wavelength (nm) | Current (mA) | Voltage (V) | Power (W) | Quantity |
 |-----------|----------|-----------------|--------------|-------------|-----------|----------|
