@@ -36,10 +36,14 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |ds18b20| Digital One-Wire Temperature Sesnor | Greenhouse & FishTank & SSR | Fully Tested ✅ - Check Multiple Device|
 |Thermistor| (10K)  | Greenhouse & FishTank & SSR8 &  | Not yet tested |
 
-## Airquality
+## Air Quality
+<p align="center">
+<img width="327" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
+</p>
+
 | Device | Notes | Board Compatbility | ToDo | Source |
-|---|---|---|---|
-|ds18b20| Digital One-Wire Temperature Sesnor | Greenhouse & FishTank & SSR | Fully Tested ✅ - Check Multiple Device|
+|---|---|---|---|---|
+|BME680| Temperature, pressure, humidity, Quality sensor | Greenhouse & FishTank | Fully Tested ✅ -| [Aliexpress](https://s.click.aliexpress.com/e/_DBvNEJ5)
 
 # Load Switching
 ## AC Switching
