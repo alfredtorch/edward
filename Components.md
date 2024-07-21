@@ -80,6 +80,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 <p align="center">
 <img width="923" alt="image" src="https://github.com/user-attachments/assets/d7b7b36d-e4ce-476a-b356-95fc76a2ec44">
 </p>
+
 | Device | Notes | Board Compatbility | ToDo | Source 
 |---|---|---|---|---|
 | Aquarium 8 Channels Module | COTS Module | Helios | Fully  Tested ✅|| [Aliexpress](https://s.click.aliexpress.com/e/_DFJCp8L)
@@ -92,13 +93,8 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 </p>
 DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA.
 [Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
-[Aliexpress 1-3Watt](https://s.click.aliexpress.com/e/_DkGRYXz)
-
-### LED Module Channel Specifications (Optional)
-<p align="center">
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/e23efa59-5471-4533-8dc1-82ef9a806d20">
-</p>
-[Aliexpress](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
+[Aliexpress 1-3Watt Driver ](https://s.click.aliexpress.com/e/_DkGRYXz)
+[Aliexpress LED Module](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
 
 | Channel   | Color    | Wavelength (nm) | Current (mA) | Voltage (V) | Power (W) | Quantity |
 |-----------|----------|-----------------|--------------|-------------|-----------|----------|
@@ -114,8 +110,7 @@ __Theoretical Power Figures__
 **Total Power Consumption:** 48.3W  
 **Required Voltage for LED Driver:** 15V (safe margin)  
 **Typical Step-Down LED Driver Input Voltage:** 24V
- 
-### Addressable LED Strip
+**Need to double check LED numbers and specifications**
 
 
 
