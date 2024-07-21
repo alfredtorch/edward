@@ -67,14 +67,21 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |Blued Mosfet  | COTS Module  5-36V at 15Amp  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
 |Black Mosfet | COTS Module different options : 30V-100V min 30Amp|  Greenhouse with SVG Mosfet Rail PCB PIO1-4 | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_Dl0jIYB)
 
-## Waterpumps
+## Motors & Actuators
+<p align="center">
+<img width="1159" alt="image" src="https://github.com/user-attachments/assets/7b122d91-2c7b-4f5d-bfee-efbb2ecd6d6e">
+</p>
 
-## Servo
-
-## Stepper
 | Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|
+|Water Pump  | AC   | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Water Pump  | DC   | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
 |28BYJ48  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Servo  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Servo  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Valve  | AC DC  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Fan  | DC  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+
 
 ## Light
 <p align="center">
