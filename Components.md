@@ -1,4 +1,5 @@
 Please if you need to shop for parts, it would be great that you use the supply links below. As they are affilated, you're supporting directly the development of Edward! Thank you!
+The boards contains QWIIC connectors (3V3 Level). This allows to integrate many sensors from Adafruit or Sparkfun.
 
 # Sensors
 
@@ -6,8 +7,6 @@ Please if you need to shop for parts, it would be great that you use the supply 
 <p align="center">
 <img width="450" alt="image" src="https://github.com/user-attachments/assets/4e351981-9f5a-4c53-b4ae-eac67a5f55af">
 </p>
-
-
 
 Device| Integration | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|---|
@@ -36,7 +35,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |ds18b20| Digital One-Wire Temperature Sesnor | Greenhouse & FishTank & SSR | Fully Tested ✅ - Check Multiple Device|
 |Thermistor| (10K)  | Greenhouse & FishTank & SSR8 &  | Not yet tested |
 
-## Air Quality
+## Ambient & Air Quality
 <p align="center">
 <img width="227" alt="image" src="https://github.com/user-attachments/assets/bbfaf659-d034-4ed6-8a36-a47976b0b307">
 </p>
