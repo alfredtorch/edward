@@ -23,7 +23,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |Limit Switch| Can be used for Chicken Coop Door, Floating switch | Greenhouse & FishTank : L1 - L2 | Fully Tested ✅| 
 |Sonar| Measure Distance to Water Surface | GreenHouse : Not yet tested | |
 |Optical Water | Can not be fully submerged (Tank mounted) | Greenhouse & Fishtank | Fully Tested ✅|
-|Fuel Gauge | Solid Design - 5 stage 0 - 190Ohm | GreenHouse & Fishtank : Thermistor - SSR8 on Analog | Fully Tested ✅|
+|Fuel Gauge | Solid Design - 5 stage 0 - 190Ohm | GreenHouse & Fishtank : Thermistor - SSR Rebel on Analog | Fully Tested ✅|
 
 ## Temperature
 <p align="center">
@@ -65,6 +65,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 |---|---|---|---|---|
 |Blued Mosfet  | COTS Module  5-36V at 15Amp  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
 |Black Mosfet | COTS Module different options : 30V-100V min 30Amp|  Greenhouse with SVG Mosfet Rail PCB PIO1-4 | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_Dl0jIYB)
+|On Board Switch | Power Smart Switch |  Fishtank PIO1-4 | Fully Tested ✅|
 
 ## Motors & Actuators
 <p align="center">
@@ -73,13 +74,12 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 
 | Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|
-|Water Pump  | AC   | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Water Pump  | DC   | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|28BYJ48  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Servo  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Servo  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Valve  | AC DC  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
-|Fan  | DC  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested ✅  | [Aliexpress](https://s.click.aliexpress.com/e/_DFgjmCX)
+|Water Pump  | AC  | Greenhouse with SSR or Relay - SSR Rebel (dimming not recommanend | Tested ✅  | 
+|Water Pump  | DC  | Greenhouse with Mosfet Rail PCB - Fishtank Load Switch  | Not yet Tested |
+|28BYJ48  | Geared Stepper Motor  | Greenhouse with GSV Mosfet Rail PCB - PIO1-4 | Not yet Tested  |
+|Servo | PWM Controller  | Greenhouse & Fistank : Servo 1 2  | Not yet Tested  |
+|Valve | AC DC  | Greenhouse with Load Rail PCB - PIO1-4 | Not yet Tested |
+|Fan  | DC  | Greenhouse & Fish House PCTN - Helios EMC2102 Fan | Not yet Tested |
 
 
 ## Light
