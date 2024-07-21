@@ -137,19 +137,17 @@ A working Helios setup emitting around 150 Watt of light output, water and air c
 </p>
 
 # 8 SSR Rebel Channel
+This design allows you to control and dim your AC appliances. For a grow tank, this can be light output, and for an irrigation control valve. Applying phase dimming to an unsupported appliance may destroy it. Careful checking and handling are required while using the device.
 
-This design allows you to control and dimm your AC appliances. For a growtank this can be light output and for an irragation control valve 
-Applying phase dimming to an unsupported appliance may destroy it. Carefull checking and handling is required while using the device.
-
-all the different light levels your plant deserves, while keeping everything cold. It uses a third-party LED circuit but allows you to build your own.
+This system provides all the different light levels your plant deserves while keeping everything cool. It uses a third-party LED circuit but allows you to build your own.
 
 Features:
-* ESP32-based
-* Tasmota and Esphome Compatible
-* 8 Channel Phase dimming of AC Loads (0-100%) with dedicated Schmitt-Trigger for stable operations
-* On Board ACDC Power Supply
-* AC Current Monitor
-* GUI with Display and Encoder
+- **ESP32-based:** Built around the reliable and efficient ESP32 microcontroller.
+- **Tasmota and ESPHome Compatible:** Easily integrates with popular home automation frameworks.
+- **8 Channel Phase Dimming of AC Loads (0-100%):** Equipped with a dedicated Schmitt-Trigger for stable operations.
+- **On-Board ACDC Power Supply:** Ensures stable power management.
+- **AC Current Monitor:** Monitors the current to ensure safe and efficient operation.
+- **GUI with Display and Encoder:** User-friendly interface for easy control and monitoring.
 
 <p align="center">
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
@@ -178,8 +176,7 @@ Zero Crossing = can be used as main detector (binary state) JP2 connected or zer
 - [ ] GUI components not yet tested
 
 # [Components](Components.md)
-One design goal is to easy intergrate new components without needing to go back to a breadboard design. These components should be mainly be COTS (Custon-Off-The-Shelf) goods for easy and cost efficient sourcing.
-A detailed overview is provided. These integrations can result direct on-board or request some addiditionnal PCB designs [available in the Hardware Repository](/Hardware/).
+One design goal is to easily integrate new components without needing to revert to a breadboard design. These components should mainly be COTS (Custom-Off-The-Shelf) goods for easy and cost-efficient sourcing. A detailed overview is provided. These integrations can result in direct on-board implementation or require additional PCB designs available in the [available in the Hardware Repository](/Hardware/).
 
 <p align="center">
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/2869c10f-52cb-4eb7-b3a5-28e97be0c340">
