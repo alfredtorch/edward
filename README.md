@@ -1,7 +1,7 @@
-<img width="1044" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/efd46c8c-8d4a-45d7-ad58-6c7031de8b7f">
+2<img width="1044" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/efd46c8c-8d4a-45d7-ad58-6c7031de8b7f">
 Edward is an innovative solution that synergizes citizen science with urban farming, utilizing an advanced aquaponic system to address environmental challenges. Edward aims to produce sustainable food sources while fostering community involvement and contributing to a healthier, more sustainable urban environment.
 
-Envisioned as an expansive urban farming laboratory, Edward initially focuses on aquaponics. This highly efficient farming method is capable of producing local food with minimal resource impact and effort. By transforming existing water bodies, such as ponds or basins, into productive food sources, Edward epitomizes the principles of the circular economy.
+Designed as an expansive urban farming laboratory, Edward initially focuses on aquaponics. This highly efficient farming method is capable of producing local food with minimal resource impact and effort. By transforming existing water bodies, such as ponds or basins, into productive food sources, Edward epitomizes the principles of the circular economy.
 
 Key Features
 - Smart Garden Community: Build your self-sufficient technology platform and transform public spaces into urban farming areas.
