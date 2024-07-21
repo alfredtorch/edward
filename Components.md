@@ -54,7 +54,7 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
 | Device | Notes | Board Compatbility | ToDo | Source |
 |---|---|---|---|---|
 |Relay  | 5V 4 Channel  | Greenhouse with Relay - PCB  | Not yet Tested| [Aliexpress](https://s.click.aliexpress.com/e/_DFJCp8L)
-|Solid State Relay | Greenhouse with SSR - PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DkCJPYb)
+|Solid State Relay | 8x 2Amp main SSR |Greenhouse with SSR - PCB  | Fully Tested ✅| [Aliexpress](https://s.click.aliexpress.com/e/_DkCJPYb)
 |Dimmable Solid State Relay | 8x 2Amp main SSR | SSR Rebel with Zero Crossing Circuit  | Fully Tested ✅| Tindie Store soon
 
 ## DC Switching
@@ -92,9 +92,10 @@ Flow Meter|DS1683 | Event Counter on I2C | Helios : Not yet test | Develop Compo
  <img width="527" alt="image" src="https://github.com/user-attachments/assets/4f1ba150-cdbf-4a0e-97e0-a1164266668d">
 </p>
 DC 3W 5-35V Led Driver Step Down : Exist for 350mA and 700mA.
-[Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
-[Aliexpress 1-3Watt Driver ](https://s.click.aliexpress.com/e/_DkGRYXz)
-[Aliexpress LED Module](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
+
+*[Datasheet](https://www.led-stuebchen.de/download/PT4115E.pdf)
+*[Aliexpress 1-3Watt Driver ](https://s.click.aliexpress.com/e/_DkGRYXz)
+*[Aliexpress LED Module](https://de.aliexpress.com/item/1005002624762658.html?spm=a2g0o.productlist.0.0.7b371c3dJNj5MA&mp=1&gatewayAdapt=glo2deu)
 
 | Channel   | Color    | Wavelength (nm) | Current (mA) | Voltage (V) | Power (W) | Quantity |
 |-----------|----------|-----------------|--------------|-------------|-----------|----------|
