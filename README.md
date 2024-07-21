@@ -66,8 +66,8 @@ All shared by Licence...
 ## [Hardware](Hardware.md)
 ## [Hardware PCB Repo](/Hardware/)
 ## [Components](Components.md)
-## [Software Repo](/Software/)
-## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
+## [Software YAML Repo](/Software/)
+## [Software Devlopement Specification Sheet](SoftwareSpecificationSheetM2.md)
 ## [HackADay.io Project](https://hackaday.io/project/197025-edwardfarm)
 
 
