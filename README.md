@@ -62,9 +62,10 @@ Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md)
 The project is currently mainly organised in this respository.
 All shared by Licence... 
 ## [Hardware](Hardware.md)
-## [Hardware PCB Repo.](/Hardware/)
+## [Hardware PCB Repo](/Hardware/)
 ## [Components](Components.md)
 ## [Software Repo](/Software/)
 ## [Software Devlopment Specification Sheet](SoftwareSpecificationSheetM2.md)
+## [HackADay](https://hackaday.io/project/197025-edwardfarm)
 
 
