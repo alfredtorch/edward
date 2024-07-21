@@ -53,7 +53,8 @@ The current prototype system is powered by Home Assistant with ESPHome running o
 - There is no option for easy remote monitoring of the system (NAT, DNS, Public IP).
 - Missing control options (regular self-calibration, failsafe mode).
 
-Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
+> ## Help Needed
+> Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
 
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
