@@ -37,22 +37,23 @@ Key Features
 ## Research Project 1 : Water Cooled LEDs
 <img width="1120" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/308338e6-abe0-4e30-807d-cb491b769f31">
 
-Improve the maintenance cost and efficiency with water cooled LED. The study is focusing in efficient thermal management of the growlight. On one hand an optimal cooling will provide long term stable light caracteristics and raise lifespan. On the hand, the possible to heat the fish tank from local waste heat.
-### Phase
-1. Design Possibilities (Heat Sink, LED Holder, ...)
-2. Check Safety Concerns (electrocution, fire, light amount)
-3. Regulate Water pump and light intensity (based on state machine and scheduling)
-4. Measure (Light quality (Energy and Wavelengths, Consumption) over time
+Improve the maintenance cost and efficiency with water-cooled LEDs for grow lights. This study focuses on the efficient thermal management of the grow light. Optimal cooling will provide long-term stable light characteristics and increase lifespan. Additionally, the possible waste heat can be used to heat the fish tank.
+
+## Phases
+1. **Design Possibilities:** Explore various design possibilities such as heat sinks, LED holders, and more.
+2. **Check Safety Concerns:** Address safety concerns including risks of electrocution, fire hazards, and appropriate light levels.
+3. **Regulate Water Pump and Light Intensity:** Control the water pump and adjust light intensity based on a state machine and scheduling.
+4. **Measure Light Quality:** Assess light quality by measuring energy, wavelengths, and consumption over time.
 
 ## Development Project 1 : Move away from Home Assistant
 <img width="1406" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/004e3b65-0283-4ce5-85df-1a174a9744d0">
 
-The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi. Which was great to fast prototype a proof of concept. However this result The main challenges faced by the current system are:
-* not a standalone system (Raspberrypi + Station Controller)
-* no option for easy remote monitoring of the system (NAT, DNS, Public IP)
-* missing control options (regular self-calibration, failsafe mode)
+The current prototype system is powered by Home Assistant with ESPHome running on a local Raspberry Pi. This setup was great for quickly prototyping a proof of concept. However, the main challenges faced by the current system are:
+- It is not a standalone system (requires both Raspberry Pi and Station Controller).
+- There is no option for easy remote monitoring of the system (NAT, DNS, Public IP).
+- Missing control options (regular self-calibration, failsafe mode).
 
-Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and to develop Edward.
+Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
 
 <p align="center>
   ><img width="457" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/16de9607-761a-44c0-bd4a-c8bdb59ee4df">
