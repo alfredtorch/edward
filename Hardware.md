@@ -154,7 +154,13 @@ Features:
 </p>
 
 ## Components
-To be written.
+| Component     | Description                                                                 | Component         | Description                                                      |
+|---------------|-----------------------------------------------------------------------------|-------------------|------------------------------------------------------------------|
+| AQG22212 or G3MB-202PL | SSR AC 2Amp No Zero Crossing                                       | Rotary Encoder            | Fan Controller & Tach Monitor                                    |
+| WS29812       | Event Counter for Water Flowmeter                                           | OLED           | PWM LED and Power Switch                                         |
+| Jack 3,5mm Current       | Circuit for reading SCT-013                                      | IR Receiver      | Receives commands from IR Remote Control                       |
+| DS18b20       | On-board or JST Plug for temperature reading                                | Button & Potentiometer      | User Interface and analog read                    |
+
 
 ## Pinout
 | Pin | Controls | Pin | Controls | Pin | Controls |
