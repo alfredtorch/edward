@@ -68,6 +68,7 @@ All shared by Licence...
 ## [Components](Components.md)
 ## [Software YAML Repo](/Software/)
 ## [Software Devlopement Specification Sheet](SoftwareSpecificationSheetM2.md)
+## [Discord Server](https://discord.gg/AFunXj2wjE)
 ## [HackADay.io Project](https://hackaday.io/project/197025-edwardfarm)
 
 <a href="https://trackgit.com">
