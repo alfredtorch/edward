@@ -153,6 +153,9 @@ Features:
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
 </p>
 
+## Components
+To be written.
+
 ## Pinout
 | Pin | Controls | Pin | Controls | Pin | Controls |
 |-----------|---------------------|-----------|---------------------| -----------|---------------------|
