@@ -174,7 +174,7 @@ Features:
 | IO27      | SSR7                  | PWM13     | BTN               |            |                     |
 | IO25      | SSR8                  |           |                   |            |                     |
 
-Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank).
+_Note: Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank)._
 <p align="center">
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
 <br>
