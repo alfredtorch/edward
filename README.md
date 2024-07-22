@@ -12,7 +12,7 @@ Key Features
 <img width="600" alt="image" src="https://github.com/alfredtorch/edward/assets/38537119/b09d52ce-bccf-47e4-86c5-7ff1bcfb4936">
 </p>
 
-> ## Help Needed
+> ## Software Developper Needed
 > Please visit the [Software Specification Sheet](SoftwareSpecificationSheetM2.md) if you would like to collaborate and help to develop Edward.
 
 # Growing Lab & Sharing Knowledge
