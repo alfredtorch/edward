@@ -70,4 +70,8 @@ All shared by Licence...
 ## [Software Devlopement Specification Sheet](SoftwareSpecificationSheetM2.md)
 ## [HackADay.io Project](https://hackaday.io/project/197025-edwardfarm)
 
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/lywlwuddrydqrdt6pnjl" alt="trackgit-views" />
+</a>
+
 
