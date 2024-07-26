@@ -1,0 +1,292 @@
+# Designed with ChatGPT not tested, not a single line written.
+
+esphome:
+  name: chicken_coop
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "YOUR_SSID"
+  password: "YOUR_PASSWORD"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+i2c:
+  sda: D2
+  scl: D1
+  scan: True
+
+sensor:
+  - platform: tsl2561
+    name: "TSL2561 Ambient Light"
+    address: 0x39
+    update_interval: 60s
+    id: tsl_sensor
+    on_value_range:
+      - above: !lambda 'return id(lux_threshold_sunrise).state;'
+        then:
+          - cover.open: garage_door
+          - lambda: |-
+              ESP_LOGD("Custom", "Lux above threshold, opening door.");
+      - below: !lambda 'return id(lux_threshold_sunset).state;'
+        then:
+          - cover.close: garage_door
+          - lambda: |-
+              ESP_LOGD("Custom", "Lux below threshold, closing door.");
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: "YOUR_TIMEZONE" # Replace with your timezone
+    latitude: YOUR_LATITUDE  # Replace with your latitude
+    longitude: YOUR_LONGITUDE  # Replace with your longitude
+    on_time:
+      - seconds: 0
+        minutes: 0
+        then:
+          - lambda: |-
+              ESP_LOGD("Custom", "Synchronizing NTP time to RTC.");
+              if (id(sntp_time).now().is_valid()) {
+                id(rtc_time).set_time(id(sntp_time).now());
+              }
+
+  - platform: ds3231
+    id: rtc_time
+    timezone: "YOUR_TIMEZONE" # Replace with your timezone
+    on_time:
+      - seconds: 0
+        minutes: /45  # Check every 45 minutes
+        then:
+          - lambda: |-
+              ESP_LOGD("Custom", "Checking door operations based on time and lux values.");
+              auto time = id(rtc_time).now();
+              if (time.is_valid()) {
+                auto sunrise = id(rtc_time).sunrise();
+                auto sunset = id(rtc_time).sunset();
+                float lux = id(tsl_sensor).state;
+                if (lux > id(lux_threshold_sunrise).state && time.is_after(sunrise, 0)) {
+                  id(garage_door).open();
+                } else if (lux < id(lux_threshold_sunset).state && time.is_after(sunset, 0)) {
+                  id(garage_door).close();
+                }
+              } else {
+                ESP_LOGE("Custom", "Invalid time data, please check RTC settings.");
+              }
+
+cover:
+  - platform: template
+    name: "Chicken Coop Door"
+    id: garage_door
+    open_action:
+      - stepper.set_target:
+          id: stepper
+          target: 0  # Open the door (target position for open)
+    close_action:
+      - stepper.set_target:
+          id: stepper
+          target: !lambda 'return id(calibration_position_down).state;'  # Close the door (target position for closed)
+    stop_action:
+      - stepper.set_target:
+          id: stepper
+          target: id(stepper).current_position  # Stop the motor
+    optimistic: true
+
+output:
+  - platform: gpio
+    pin: D1
+    id: stepper_step
+  - platform: gpio
+    pin: D2
+    id: stepper_dir
+
+# Stepper motor configuration for 28BYJ-48
+stepper:
+  - platform: uln2003
+    id: stepper
+    step_pin: D1
+    dir_pin: D2
+    max_speed: 250 steps/s
+    sleep_pin: D3
+    acceleration: inf
+    deceleration: inf
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: "Top Endstop"
+    id: top_endstop
+    on_press:
+      then:
+        - cover.open: garage_door  # Mark door as open when top endstop is hit
+        - stepper.report_position:
+            id: stepper
+            position: 0
+        - stepper.set_target:
+            id: stepper
+            target: 0  # Stop the stepper motor when top endstop is hit
+
+  - platform: gpio
+    pin: D6
+    name: "Bottom Endstop"
+    id: bottom_endstop
+    on_press:
+      then:
+        - cover.close: garage_door  # Mark door as closed when bottom endstop is hit
+        - stepper.report_position:
+            id: stepper
+            position: !lambda 'return id(calibration_position_down).state;'
+        - stepper.set_target:
+            id: stepper
+            target: !lambda 'return id(calibration_position_down).state;'  # Stop the stepper motor when bottom endstop is hit
+
+  - platform: gpio
+    pin: D7
+    name: "Manual Open Button"
+    id: manual_open_button
+    on_press:
+      then:
+        - cover.toggle: garage_door  # Toggle door state when button is pressed
+
+switch:
+  - platform: gpio
+    name: "Calibration Mode"
+    pin: D8
+    id: calibration_switch
+
+interval:
+  - interval: 1min
+    then:
+      - lambda: |-
+          static int timeout_counter = 0;
+          static int calibration_counter = 0;
+          static bool is_calibrating = false;
+
+          if (id(calibration_switch).state) {
+            // Calibration mode is ON
+            is_calibrating = true;
+            if (calibration_counter == 0) {
+              ESP_LOGD("Custom", "Calibration started: Moving to bottom endstop.");
+              id(garage_door).close();
+            }
+            if (id(stepper).state != STEP_IDLE) {
+              calibration_counter++;
+            } else {
+              if (id(bottom_endstop).state && !id(top_endstop).state) {
+                int down_time = calibration_counter;
+                int down_timeout = down_time + 5;  # Add 5 seconds tolerance
+                id(calibration_position_down).publish_state(id(stepper).current_position);
+                id(timeout_calibration_time_down).publish_state(down_timeout);
+                ESP_LOGD("Custom", "Down calibration completed. Timeout set to %d seconds.", down_timeout);
+
+                calibration_counter = 0;
+                ESP_LOGD("Custom", "Calibration continuing: Moving to top endstop.");
+                id(garage_door).open();
+              } else if (id(top_endstop).state && !id(bottom_endstop).state) {
+                int up_time = calibration_counter;
+                int up_timeout = up_time + 5;  # Add 5 seconds tolerance
+                id(calibration_position_up).publish_state(id(stepper).current_position);
+                id(timeout_calibration_time_up).publish_state(up_timeout);
+                ESP_LOGD("Custom", "Up calibration completed. Timeout set to %d seconds.", up_timeout);
+
+                is_calibrating = false;
+                calibration_counter = 0;
+                id(calibration_switch).turn_off();
+              } else {
+                ESP_LOGE("Custom", "Error: Endstop state unexpected during calibration.");
+                is_calibrating = false;
+                calibration_counter = 0;
+                id(calibration_switch).turn_off();
+              }
+            }
+          } else {
+            if (id(stepper).state != STEP_IDLE) {
+              timeout_counter++;
+              int timeout_threshold_down = id(timeout_calibration_time_down).state;
+              int timeout_threshold_up = id(timeout_calibration_time_up).state;
+
+              if ((id(garage_door).state == COVER_OPENING && timeout_counter > timeout_threshold_up) ||
+                  (id(garage_door).state == COVER_CLOSING && timeout_counter > timeout_threshold_down)) {
+                ESP_LOGE("Custom", "Error: Door operation timeout, possible blockage. Door state: %s", id(garage_door).state == COVER_OPENING ? "opening" : "closing");
+                id(stepper).set_target(id(stepper).current_position);  # Stop the stepper motor
+                timeout_counter = 0;
+              }
+            } else {
+              timeout_counter = 0;
+            }
+          }
+
+sensor:
+  - platform: template
+    name: "Timeout Calibration Time Down"
+    id: timeout_calibration_time_down
+    update_interval: never
+    restore_value: true
+
+  - platform: template
+    name: "Timeout Calibration Time Up"
+    id: timeout_calibration_time_up
+    update_interval: never
+    restore_value: true
+
+  - platform: template
+    name: "Lux Threshold Sunrise"
+    id: lux_threshold_sunrise
+    update_interval: never
+    restore_value: true
+    default_value: 50.0
+    on_value:
+      then:
+        - text_sensor.template.publish:
+            id: lux_threshold_sunrise_display
+            state: !lambda 'return to_string(x);'
+
+  - platform: template
+    name: "Lux Threshold Sunset"
+    id: lux_threshold_sunset
+    update_interval: never
+    restore_value: true
+    default_value: 10.0
+    on_value:
+      then:
+        - text_sensor.template.publish:
+            id: lux_threshold_sunset_display
+            state: !lambda 'return to_string(x);'
+
+sensor:
+  - platform: template
+    name: "Calibration Position Down"
+    id: calibration_position_down
+    update_interval: never
+    restore_value: true
+    initial_value: '10000'  # Initial value for first calibration
+
+  - platform: template
+    name: "Calibration Position Up"
+    id: calibration_position_up
+    update_interval: never
+    restore_value: true
+    initial_value: '0'  # Initial value for first calibration
+
+text_sensor:
+  - platform: template
+    name: "Lux Threshold Sunrise Display"
+    id: lux_threshold_sunrise_display
+
+  - platform: template
+    name: "Lux Threshold Sunset Display"
+    id: lux_threshold_sunset_display
+
+globals:
+  - id: lux_threshold_sunrise
+    type: float
+    initial_value: '50.0'
+
+  - id: lux_threshold_sunset
+    type: float
+    initial_value: '10.0'
