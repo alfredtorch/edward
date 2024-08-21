@@ -186,10 +186,62 @@ A working SSR 8 Rebel Controller controlling 6 LED Channel, 1 Waterpump and 1 Fa
 - [ ] Current Clamp Monitor Not yet tested
 - [ ] GUI components not yet tested
 
+# Green House Micro
+This design allows you to control and dim your AC appliances. For a grow tank, this can be light output, and for an irrigation control valve. Applying phase dimming to an unsupported appliance may destroy it. Careful checking and handling are required while using the device.
+
+This system provides all the different light levels your plant deserves while keeping everything cool. It uses a third-party LED circuit but allows you to build your own.
+
+Features (To be upadte)
+- **ESP32-based:** Built around the reliable and efficient ESP32 microcontroller.
+- **Tasmota and ESPHome Compatible:** Easily integrates with popular home automation frameworks.
+- **8 Channel Phase Dimming of AC Loads (0-100%):** Equipped with a dedicated Schmitt-Trigger for stable operations.
+- **On-Board ACDC Power Supply:** Ensures stable power management.
+- **AC Current Monitor:** Monitors the current to ensure safe and efficient operation.
+- **GUI with Display and Encoder:** User-friendly interface for easy control and monitoring.
+
+<p align="center">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/1355ee44-3ea0-4316-8259-bdd46db87ab6">
+</p>
+
+## Components
+| Component     | Description                                                                 | Component         | Description                                                      |
+|---------------|-----------------------------------------------------------------------------|-------------------|------------------------------------------------------------------|
+| AQG22212 or G3MB-202PL | SSR AC 2Amp No Zero Crossing                                       | Rotary Encoder            | Fan Controller & Tach Monitor                                    |
+
+
+## Pinout
+| Pin | Controls | Pin | Controls | Pin | Controls |
+|-----------|---------------------|-----------|---------------------| -----------|---------------------|
+|  IO26     | SSR1                  | IO39      | Analog            | IO22       | SCL                 |
+| IO18      | SSR2                  | IO35      | InfraRed          | IO25       | SDA                 |
+| IO19      | SSR3                  | PWM9      | ZeroCrossing      | IO13       | EncoderA            |
+| IO23      | SSR4                  | IO33      | CurrentSignal     | IO36       | EncoderB            |
+| IO17      | SSR5                  | IO02      | Temp              | IO4        | EncoderS            |
+| IO16      | SSR6                  | IO32      | RGB               |            |                     |
+| IO27      | SSR7                  | PWM13     | BTN               |            |                     |
+| IO25      | SSR8                  |           |                   |            |                     |
+
+_Note: Zero Crossing = can be used as main detector (binary state) JP2 connected or zero crossing phase detector (periodic trigger) JP2 blank)._
+<p align="center">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/cc561315-b2fe-48dc-a08d-927bb0633771">
+<br>
+A working SSR 8 Rebel Controller controlling 6 LED Channel, 1 Waterpump and 1 Fan.
+</p>
+
+## ToDo
+- [ ] Fix AC Switch PO-SSR Mix Up ULN2008 
+- [ ] Fix Labeling - Wrong Pinout
+- [ ] Figure Out Buzzer (3v)
+- [ ] Fix Documentation (Copy Paste)
+- [ ] Remove Presence NEEd for mmWave Sensor
+- [ ] ADD Mechanical Button below Capaciv
+- [ ] Remove ACDC Main LED
+- [ ] Think about IC GPIO Foot Print
+- [ ] ADD Edward Logo to it
+
 # [Components](Components.md)
 One design goal is to easily integrate new components without needing to revert to a breadboard design. These components should mainly be COTS (Custom-Off-The-Shelf) goods for easy and cost-efficient sourcing. A detailed overview is provided. These integrations can result in direct on-board implementation or require additional PCB designs available in the [available in the Hardware Repository](/Hardware/).
 
 <p align="center">
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/2869c10f-52cb-4eb7-b3a5-28e97be0c340">
 </p>
-
