@@ -239,6 +239,7 @@ A working SSR 8 Rebel Controller controlling 6 LED Channel, 1 Waterpump and 1 Fa
 - [ ] Think about IC GPIO Foot Print
 - [ ] ADD Edward Logo to it
 - [ ] Check for Wifi Limitation during ADC GPIO
+- [ ] Check resistor for dallas - Remove multiple Pin attribuation on esp32
 
 # [Components](Components.md)
 One design goal is to easily integrate new components without needing to revert to a breadboard design. These components should mainly be COTS (Custom-Off-The-Shelf) goods for easy and cost-efficient sourcing. A detailed overview is provided. These integrations can result in direct on-board implementation or require additional PCB designs available in the [available in the Hardware Repository](/Hardware/).
