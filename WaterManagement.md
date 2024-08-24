@@ -19,3 +19,8 @@
 | Kalziumhärte / Calcium Hardness         | -               | Yes                        | High       | 120-180 mg/L      | Calcium content, important for both plants and fish.             |
 | Kupfer / Copper                         | -               | Yes                        | Medium     | 0-0.2 mg/L        | Harmful in high concentrations, monitor copper levels.           |
 | Sulfat / Sulfate                        | -               | Yes                        | Medium     | 80-120 mg/L       | Sulfur content, important for proteins.                          |
+
+__Note : Table needs to checked__
+
+To explore further:
+https://pubs.nmsu.edu/_circulars/CR680/
