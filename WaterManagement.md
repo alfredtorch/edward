@@ -20,7 +20,24 @@
 | Kupfer / Copper                         | -               | Yes                        | Medium     | 0-0.2 mg/L        | Harmful in high concentrations, monitor copper levels.           |
 | Sulfat / Sulfate                        | -               | Yes                        | Medium     | 80-120 mg/L       | Sulfur content, important for proteins.                          |
 
+| Factor                      | Influence on pH                                  | Direction     |
+|-----------------------------|-------------------------------------------------|---------------|
+| **Temperature**             | Rising temperatures increase biological activity | Lowering      |
+| **Biological Activity**     | Waste products can become acids through nitrification | Lowering |
+| **Plants**                  | Absorption of CO2 during photosynthesis can change pH | Raising during photosynthesis; varies otherwise |
+| **Nitrification**           | Conversion of ammonia to nitrite and nitrate produces acids | Lowering      |
+| **Water Changes**           | New water can adjust pH depending on its own pH  | Raising or Lowering |
+| **Time and System Maturity**| Accumulation of organic acids from waste and decomposition | Lowering      |
+| **Alkalinity**              | Buffering capacity neutralizes acids, stabilizing pH | Stabilizing, potentially lowering as capacity is exhausted |
+| **Decomposition of Organic Matter** | Releases acidic compounds into the system | Lowering      |
+| **Aquaponic Media**         | Type of media can leach substances that affect pH | Raising if calcareous materials are used |
+| **Feed Type and Quantity**  | Influences waste production and subsequent nitrification | Indirectly lowering |
+
+
 __Note : Table needs to checked__
+
+
 
 To explore further:
 https://pubs.nmsu.edu/_circulars/CR680/
+
