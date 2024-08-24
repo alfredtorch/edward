@@ -42,6 +42,14 @@
 | **Nitrate (NO3)**       | Primary nutrient, higher levels typically beneficial | High levels less toxic but should be controlled | High is good, but balanced | 5–150 mg/L              | 5–150 mg/L              |
 | **Dissolved Oxygen (DO)** | Essential for root and bacterial health | Crucial for respiration | High is good | > 5 mg/L                  | > 5 mg/L                  |
 
+| Source               | Nutrients Provided                                     | Description                                                 |
+|----------------------|--------------------------------------------------------|-------------------------------------------------------------|
+| **Fish Excretions**  | Ammonia (NH3), Nitrites (NO2), Nitrates (NO3)          | Fish waste is converted by bacteria to forms usable by plants. |
+| **Fish Feed**        | Potassium (K), Phosphorus (P), Trace Elements          | Nutrients in feed that are not fully digested are available to plants. |
+| **Bacterial Activity** | Nitrates (NO3), Nitrites (NO2), other byproducts     | Beneficial bacteria convert ammonia to nitrite and then nitrate. |
+| **Fresh Water**      | Various, depending on water source                     | Can occasionally introduce small amounts of nutrients or be used to adjust nutrient levels. |
+| **Supplementation**  | Iron (Fe), Calcium (Ca), Magnesium (Mg), etc.          | Directly added to the system to supplement deficiencies that affect plant growth. |
+
 
 __Note : Table needs to checked__
 
