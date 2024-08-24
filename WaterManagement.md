@@ -33,6 +33,15 @@
 | **Aquaponic Media**         | Type of media can leach substances that affect pH | Raising if calcareous materials are used |
 | **Feed Type and Quantity**  | Influences waste production and subsequent nitrification | Indirectly lowering |
 
+| Water Quality Parameter | Importance for Plants | Importance for Fish | High or Low Good? | Min-Max Range for Plants | Min-Max Range for Fish  |
+|-------------------------|-----------------------|---------------------|-------------------|--------------------------|-------------------------|
+| **Temperature (°C)**    | Critical for metabolic processes | Essential for health and metabolism | Optimal range preferred | 18–29°C                 | 18–29°C                  |
+| **pH**                  | Affects nutrient solubility and uptake | Affects respiratory efficiency and health | Stable is good | 6.0–7.0                 | 6.0–9.0 (varies by species) |
+| **Total Ammonia Nitrogen (TAN)** | Low levels prevent toxicity | High levels can be toxic | Low is good | < 1 mg/L                  | < 1 mg/L                  |
+| **Nitrite (NO2)**       | Low levels prevent toxicity | High levels can be toxic, affect oxygen transport | Low is good | < 1 mg/L                  | < 1 mg/L                  |
+| **Nitrate (NO3)**       | Primary nutrient, higher levels typically beneficial | High levels less toxic but should be controlled | High is good, but balanced | 5–150 mg/L              | 5–150 mg/L              |
+| **Dissolved Oxygen (DO)** | Essential for root and bacterial health | Crucial for respiration | High is good | > 5 mg/L                  | > 5 mg/L                  |
+
 
 __Note : Table needs to checked__
 
