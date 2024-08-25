@@ -50,6 +50,7 @@
 | **Fresh Water**      | Various, depending on water source                     | Can occasionally introduce small amounts of nutrients or be used to adjust nutrient levels. |
 | **Supplementation**  | Iron (Fe), Calcium (Ca), Magnesium (Mg), etc.          | Directly added to the system to supplement deficiencies that affect plant growth. |
 
+https://www.aquagardening.com.au/aquaponics/water-quality-ph-control/ammonia-testing/
 
 __Note : Table needs to checked__
 
