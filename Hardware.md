@@ -229,17 +229,17 @@ A working SSR 8 Rebel Controller controlling 6 LED Channel, 1 Waterpump and 1 Fa
 </p>
 
 ## ToDo
-- [ ] Fix AC Switch PO-SSR Mix Up ULN2008 
-- [ ] Fix Labeling - Wrong Pinout
-- [ ] Figure Out Buzzer (3v)
-- [ ] Fix Documentation (Copy Paste)
-- [ ] Remove Presence NEEd for mmWave Sensor
-- [ ] ADD Mechanical Button below Capaciv
-- [ ] Remove ACDC Main LED
-- [ ] Think about IC GPIO Foot Print
-- [ ] ADD Edward Logo to it
-- [ ] Check for Wifi Limitation during ADC GPIO
-- [ ] Check resistor for dallas - Remove multiple Pin attribuation on esp32
+- [X] Fix AC Switch PO-SSR Mix Up ULN2008 
+- [X] Fix Labeling - Wrong Pinout
+- [X] Figure Out Buzzer (3v)
+- [X] Fix Documentation (Copy Paste)
+- [X] Remove Presence need for mmWave Sensor
+- [X] Add Mechanical Button below Capaciv
+- [X] Remove ACDC Main LED
+- [X] Think about IC GPIO Foot Print
+- [X] ADD Edward Logo to it
+- [X] Check for Wifi Limitation during ADC GPIO
+- [X] Check resistor for dallas - Remove multiple Pin attribuation on esp32
 
 # [Components](Components.md)
 One design goal is to easily integrate new components without needing to revert to a breadboard design. These components should mainly be COTS (Custom-Off-The-Shelf) goods for easy and cost-efficient sourcing. A detailed overview is provided. These integrations can result in direct on-board implementation or require additional PCB designs available in the [available in the Hardware Repository](/Hardware/).
